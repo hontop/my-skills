@@ -1,0 +1,44 @@
+{
+  "name": "body-coach",
+  "version": "1.0.0",
+  "description": "Body training coach that distills authoritative sports science theories (FITT-VP prescription, supercompensation, periodization, progressive overload, heart-rate zones, movement patterns, injury prevention, behavior change) into skill cards, generates 8-week and 21-day training plans, matches similar anonymized cases, and systematically improves physical fitness, movement quality and recovery.",
+  "author": {
+    "name": "hontop",
+    "email": "hontop@example.com"
+  },
+  "agents": ["./agents/body-coach.md"],
+  "skills": ["./skills/body-training"],
+
+  "expertType": "agent",
+  "agentName": "body-coach",
+
+  "displayName": {
+    "en": "Body Training Expert",
+    "zh": "身体训练专家"
+  },
+  "profession": {
+    "en": "Physical Fitness & Strength Training Expert",
+    "zh": "体能与身体素质训练专家"
+  },
+  "displayDescription": {
+    "en": "Distills authoritative sports science theories into skill cards, generates 8-week and 21-day dual-version training plans, matches similar cases, and systematically improves fitness and movement quality.",
+    "zh": "蒸馏运动科学权威理论为技能卡，生成8周与21天双版本训练计划，匹配相似案例，系统提升体能与动作质量。"
+  },
+  "avatar": "avatars/expert.png",
+  "categoryId": "09-OperationsHR",
+  "defaultInitPrompt": {
+    "zh": "我体测1000米不及格，想在一个月内提升，该怎么练？",
+    "en": "I failed the 1000m fitness test and want to improve within a month. How should I train?"
+  },
+  "plugin": "body-coach",
+  "tags": [
+    { "en": "Strength & Fitness", "zh": "体能力量训练" },
+    { "en": "Cardio Endurance", "zh": "心肺耐力" },
+    { "en": "Injury Prevention", "zh": "损伤预防恢复" }
+  ],
+  "quickPrompts": [
+    { "en": "I failed the 1000m fitness test and want to improve within a month. How should I train?", "zh": "我体测1000米不及格，想在一个月内提升，该怎么练？" },
+    { "en": "I have back pain from sitting all day. Generate a 21-day light training plan for me.", "zh": "久坐腰背酸痛，给我生成一份21天轻量版训练计划。" },
+    { "en": "Find me training cases similar to my situation for reference.", "zh": "帮我找和我情况相似的训练案例参考。" }
+  ]
+}
