@@ -1,0 +1,66 @@
+{
+  "skill": "coaching-habit",
+  "version": "0.1.0",
+  "source_book": "关键7问（The Coaching Habit） — [加] 迈克尔·邦吉·斯坦尼尔",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我带的一个学弟每次都说「我最近状态不太好」，然后就没话了，我该怎么跟他聊？",
+      "expected_behavior": "应激活 coaching-habit，加载 awe-question 能力卡，指导用「还有什么吗？」连问三次越过第一个表面答案，并提示先不急着给建议",
+      "notes": "典型场景：对方只给出第一个答案就停住 + 提问者有给建议的冲动"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "同事跟我说「这个方案你帮我看看呗」，我还没搞清他要我做什么，怎么接？",
+      "expected_behavior": "应激活 coaching-habit，加载 lazy-question-how-can-i-help，指导用「我可以如何帮助你？」把请求推回对方具体化，再决定答应到什么程度",
+      "notes": "含糊请求 + 过度承诺风险，是懒惰问题的专属触发"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我一听别人说困难就忍不住直接给方案，事后又后悔，怎么改？",
+      "expected_behavior": "应激活 coaching-habit，加载 advice-monster-interception 与 new-habit-formula，给出触发点清单 + <60 秒拦截句 + 挫折预案",
+      "notes": "建议怪兽是本书的元能力，触发信号明确"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我这个论文选题想了两个月了，试了好几个方向都不行，感觉整个问题就问错了",
+      "expected_behavior": "不应激活 coaching-habit，应激活 questions-are-the-answer（问题重构 / 问题风暴）",
+      "notes": "跨书混淆诱饵（硬性要求）：这是「为自己生成／重构问题」，不是「对话中引导他人」"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "这篇文章说「每天喝 8 杯水能显著提高记忆力」，这个说法靠谱吗？",
+      "expected_behavior": "不应激活 coaching-habit，应激活 asking-the-right-questions（十大批判性问题清单）",
+      "notes": "跨书混淆诱饵：这是检验别人的论证，不是对话中的提问"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "服务器挂了，线上用户全部 500，赶紧告诉我怎么恢复",
+      "expected_behavior": "不应激活 coaching-habit，应直接给指令性解决方案",
+      "notes": "边界诱饵：紧急危机场景，本书明确排除（要下指令不是提问）"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我想跟导师谈一次，问问他对我选题的意见，该怎么开口？",
+      "expected_behavior": "可以激活 coaching-habit（kickstart-3p 开场定位），但必须同时提示权力距离的调整：直接问「对您而言」可能触发防御，需要更迂回的措辞（如「您希望我从哪部分先入手？」）",
+      "notes": "边界：属于对话场景但关系是高权力距离，本册的 B 段明确标注了这个文化盲点"
+    },
+    {
+      "id": "edge-02",
+      "type": "edge_case",
+      "prompt": "Python 的 asyncio.gather 和 TaskGroup 有什么区别？直接告诉我",
+      "expected_behavior": "不应激活 coaching-habit，直接给知识性答案",
+      "notes": "边界：对方要的是知识不是思考机会 —— 本册明确排除，此时憋着不给答案是不恰当的"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "should_not_trigger 容错为 0；其中 should-not-trigger-01/02 为跨书混淆测试（三册之间的抢调用风险最高）。"
+}

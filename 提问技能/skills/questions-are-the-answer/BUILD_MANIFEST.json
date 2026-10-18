@@ -1,0 +1,36 @@
+{
+  "tool": "cangjie-tools v2.5.0",
+  "published_hashes": {
+    "references\\capabilities\\broadcast-to-receive.md": "86e36525ab084c0ddc6516b8ad081a5f9ce4b0b443991d663e641cd7d8c9f60f",
+    "references\\capabilities\\catalytic-question-recipes.md": "8483fd48fcbac775c13dca2515bb186b94cb986470862b55523e34d3f2e87c18",
+    "references\\capabilities\\make-errors-visible.md": "054642c9d0536ab948207e8a2fb4ff858773bd8e7fcf13c3006060e95e05bdec",
+    "references\\capabilities\\manufacture-discomfort.md": "5cebe688334ad456ed4bf571e1a2682ac5eb96db67100b882defea40345f31b6",
+    "references\\capabilities\\question-burst.md": "1fe840146703bcb3c98438b0bf8f05de152b90eb75894dcbf4dd8566b97c2ee1",
+    "references\\capabilities\\reframe-the-question.md": "15b32703e2dd8dc8015cc6c3ca59c2864eca7978b5c62a32d70e524ddad8cf27",
+    "references\\capability-index.md": "2d0db481c8156563b8b309d50275fe0b949986c706356653ddb02dcdc2dc19d9",
+    "references\\cheatsheet.md": "f1b59f5c630f94248fedc17becc5d89465f9c80c9309b7c92cdbc66f32edb426",
+    "references\\glossary.md": "805a50b4e10d5b0e6a97f19ee836f095aa3b647c5cff387f49c199dd47b00dbf",
+    "references\\overview.md": "9110bb5cfa496a569813144f3dbec04e9ff1f2cf9c71e6f79a4498722ed732c7",
+    "SKILL.md": "3149cdfb213937fdbd08f0f396eef966ee26c37668d59e270427700e40fbb154"
+  },
+  "note": "update/重编译前比对 published_hashes；检测到本地手改不得静默覆盖",
+  "bundle_id": "bundle.questions-are-the-answer",
+  "bundle_sha256": "b6f3114d7cbc0a13c91146c5bd0e8715b3e81d214600f3aa7775db390ecd822b",
+  "variant": "single",
+  "run_id": "run-20261018-001154-bac9b1",
+  "decision": {
+    "schema_version": 1,
+    "requested": "single",
+    "selected": "single",
+    "decision_policy": "single-first-v1",
+    "skill_budget": 8,
+    "promoted_count": 3,
+    "capability_count": 6,
+    "reasons": [
+      "用户显式选择 single，auto 决策器不覆盖用户选择"
+    ],
+    "alternative": "compact pack（1 个来源路由入口 + 3 个晋级 Skill，共 4 个可发现入口）",
+    "user_confirmed": true,
+    "preserve_strategy_on_update": true
+  }
+}

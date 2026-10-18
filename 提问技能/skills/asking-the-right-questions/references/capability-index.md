@@ -1,0 +1,10 @@
+# 能力索引（完整版）
+
+| capability_id | 标题 | 重要度 | 意图 | 关键词 | 能力卡 |
+|---|---|---|---|---|---|
+| cap.asking-the-right-questions.critical-questions-checklist | 十大批判性问题清单 | critical | 看到一条观点／结论，想判断它值不值得信（热搜、推文、广告、报告、论文结论）；要写立场性文章／做汇报，想在发布前自检自己的论证；在两个相反观点之间摇摆，不知道该站哪边；发现自己「说不出为什么，但就是觉得不对」；要评估一份证据／一组数据能不能支撑某个主张 | 批判性思维、critical thinking、学会提问、淘金式思维、这套说法成立吗、论证、argument、逻辑漏洞、可信吗、值不值得信 | capabilities/critical-questions-checklist.md |
+| cap.asking-the-right-questions.surface-hidden-assumptions | 挖出未说出口的假设 | critical | 和别人（或两篇文章）在同一件事上结论相反，但双方证据看起来都不差；讨论反复绕圈，每次都回到同一个点谁也说服不了谁；觉得对方「道理都对但我就是不接受」（通常是价值观假设冲突）；要写立场性文章，想让自己的论证更经得起质疑；一个论证看起来逻辑完整，但你直觉上不安（通常有未检验的描述性假设） | 隐含假设、hidden assumption、价值观假设、value assumption、描述性假设、descriptive assumption、前提、premise、分歧根源、未说出口 | capabilities/surface-hidden-assumptions.md |
+| cap.asking-the-right-questions.alternative-causes | 替代原因与竞争性假说 | high | 有人用一个相关性来支持因果主张（「用了 X 的人成绩更好，所以要用 X」）；看到一个「A 导致 B」的说法，觉得太顺了、太符合直觉；要解释一个现象（「为什么最近状态差」），第一个想到原因就想停；要做研究／写论文，需要排除竞争性解释；一个成功经验被总结成方法论（「成功的人都做 X」） | 替代原因、alternative causes、相关不等于因果、correlation is not causation、竞争性假说、confounder、第三变量、反向因果、归因 | capabilities/alternative-causes.md |
+| cap.asking-the-right-questions.argument-triple | 论证三件套拆解 | high | 面对一段较长的论述／文章／报告，不知道从哪里开始评；和别人讨论了一阵，发现双方好像在谈不同的事；读完一篇文章说不出它的核心主张是什么；要写东西，想先确认自己的论证结构是不是完整；一段话让你很认同或很反感，但你说不清它在说什么 | 论题、issue、结论、conclusion、理由、reason、证据、evidence、论证结构、argument structure | capabilities/argument-triple.md |
+| cap.asking-the-right-questions.evidence-and-data-check | 证据效力与数据欺骗性 | medium | 有人用一个数字来支持主张（「增长了 200%」「满意度 95%」）；一个结论只靠一个故事／一个案例支撑；要判断一份报告／调查／问卷结果能不能用；要在自己的文章里引用数据，想确认它没有误导；两组数据看起来矛盾（通常是口径不同，不是谁错了） | 证据效力、evidence、数据欺骗、misleading statistics、基数、base rate、平均数、average、中位数、样本 | capabilities/evidence-and-data-check.md |
+| cap.asking-the-right-questions.gray-thinking-conditional | 灰度思维：条件化结论 | medium | 要对一个问题下结论，但发现正反都有道理；两个方案／观点看起来都不错，选不出来；自己（或对方）在用「要么 A 要么 B」的框架，但选项显然不止两个；被逼着表态，但信息还不足以做绝对判断；写完一段分析，最后一句话不知道怎么收 | 灰度思维、gray thinking、非黑即白、false dilemma、二元思维、条件化结论、看情况、it depends、权衡 | capabilities/gray-thinking-conditional.md |

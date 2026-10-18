@@ -1,0 +1,38 @@
+{
+  "tool": "cangjie-tools v2.5.0",
+  "published_hashes": {
+    "references\\capabilities\\advice-monster-interception.md": "e7f259ef97acde85225473f6eed01414eb89ded1df3c93ba04857f2cc035f9cd",
+    "references\\capabilities\\awe-question.md": "1026a5375a467cf59e00013de93f320b708a0db5b0a0f54cf58a164e22966071",
+    "references\\capabilities\\focus-question-for-you.md": "8f628a22aeeaa8e4edc658babbac1532b7e4b6774f853ce16b942664152e8d52",
+    "references\\capabilities\\kickstart-3p.md": "9da513522dc57a03ae8536da565e8b527f63a9b178194c09ec76547948268696",
+    "references\\capabilities\\lazy-question-how-can-i-help.md": "078c7a52bcc035bbfebd9570e3f68722ec830f4bd159843d9f54566ad151db26",
+    "references\\capabilities\\learning-question-double-loop.md": "10d936694af92d2f7ab7e1930ca5dcaf24d877fa17bcdfcc8889c52aedac34ab",
+    "references\\capabilities\\new-habit-formula.md": "d04eec62832bd398da41f463500ba998337ae437839aba831a89d8206a518540",
+    "references\\capabilities\\strategic-question-yes-no.md": "6f8d4fc94810da196592ab55399bb4ba7391ed0b343c501e05ae9475b39852c6",
+    "references\\capability-index.md": "6078b1f606b85ca743c0ab7909e40a3a5e3b94a807ee1444c945699f0e8493fb",
+    "references\\cheatsheet.md": "65900ee9e29a19bab595e475680cb9587d41b570dfeb722d057b958a903be4ed",
+    "references\\glossary.md": "4980a778e766c66143e812b198fbf571b935ed45dd8a1273597616d305f446ab",
+    "references\\overview.md": "29926b28377dbfded7c45af94db52cd4c6f7ffa6555f20d0bc42688cb76efeb4",
+    "SKILL.md": "08fd583f80a40bb7203eb984c2c6f8705e48d33e4a8e3d39b8f8ead4f39af3b4"
+  },
+  "note": "update/重编译前比对 published_hashes；检测到本地手改不得静默覆盖",
+  "bundle_id": "bundle.coaching-habit",
+  "bundle_sha256": "765fc81c95a0ef3a854987c4f9b9d03d033def90c9e17366e3665cb05fbc372f",
+  "variant": "single",
+  "run_id": "run-20261018-001225-3c59ba",
+  "decision": {
+    "schema_version": 1,
+    "requested": "single",
+    "selected": "single",
+    "decision_policy": "single-first-v1",
+    "skill_budget": 8,
+    "promoted_count": 3,
+    "capability_count": 8,
+    "reasons": [
+      "用户显式选择 single，auto 决策器不覆盖用户选择"
+    ],
+    "alternative": "compact pack（1 个来源路由入口 + 3 个晋级 Skill，共 4 个可发现入口）",
+    "user_confirmed": true,
+    "preserve_strategy_on_update": true
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "tool": "cangjie-tools v2.5.0",
+  "published_hashes": {
+    "references\\capabilities\\alternative-causes.md": "74a637a781f84d116fe39430c0c976453522341d216752e37af1131c94b63bd8",
+    "references\\capabilities\\argument-triple.md": "99632e4138f52617a7e93004706767954b947162bafc3b2f46beaeb9a39f322c",
+    "references\\capabilities\\critical-questions-checklist.md": "117590279af2bd8da6fd1033c4eb84ce5bb96473e6c2d8af27cb04db83bc4ca8",
+    "references\\capabilities\\evidence-and-data-check.md": "8a404857ea96c630d87a6c62185220a82766472b21f6503513e95058ea229f24",
+    "references\\capabilities\\gray-thinking-conditional.md": "303a62447ee8f304392f0b2d6edcdb2889a1e0d542b77d90490da74942fff119",
+    "references\\capabilities\\surface-hidden-assumptions.md": "1e72026dfce8c07d1ee497fbaeaba89e39f0f0d2030bf6312f9a45a7e2e46397",
+    "references\\capability-index.md": "7782ffdf6c8cbe5cd760ed32a71f4776990ceb22834c2a5581896a8bae9e918e",
+    "references\\cheatsheet.md": "26b2e38aaf5baaf03f6f8c41d3ebfbd5f30e0e5cfa93ab9cd5eb0412d7a47c28",
+    "references\\glossary.md": "e2f65a18bb89effd976d5da93996307fc0d3b79d809fc91c5a116af6c00704c8",
+    "references\\overview.md": "2f152e76ab36b7954ce426f4adb6979ec0f3f3923fa2bc696223d64d7e3cb973",
+    "SKILL.md": "0d9a739b97e7c215fbb65021ad424ff609c749227ffc311432be10d13cea0a70"
+  },
+  "note": "update/重编译前比对 published_hashes；检测到本地手改不得静默覆盖",
+  "bundle_id": "bundle.asking-the-right-questions",
+  "bundle_sha256": "b72b6bb08fb177a28e9e390174c99e077f7b837c210fe953a00fe2225cc7feb5",
+  "variant": "single",
+  "run_id": "run-20261018-001203-4eac48",
+  "decision": {
+    "schema_version": 1,
+    "requested": "single",
+    "selected": "single",
+    "decision_policy": "single-first-v1",
+    "skill_budget": 8,
+    "promoted_count": 3,
+    "capability_count": 6,
+    "reasons": [
+      "用户显式选择 single，auto 决策器不覆盖用户选择"
+    ],
+    "alternative": "compact pack（1 个来源路由入口 + 3 个晋级 Skill，共 4 个可发现入口）",
+    "user_confirmed": true,
+    "preserve_strategy_on_update": true
+  }
+}

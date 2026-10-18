@@ -1,0 +1,59 @@
+{
+  "skill": "questioning-power",
+  "version": "0.1.0",
+  "source_book": "提问力三书合辑 — 《关键7问》／《问题即答案》／《学会提问》",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我想提升一下提问能力，不知道该看哪本书、从哪开始",
+      "expected_behavior": "应激活 questioning-power，先用「一句话分流」讲清三册分工（跟人说话／自己卡住／判断真假），再按用户实际遇到的场景推荐一册",
+      "notes": "典型场景：用户自己也不知道该用哪种提问方法"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "「少说多问」到底是哪本书的主张？跟「接收模式」有什么区别？",
+      "expected_behavior": "应激活 questioning-power，明确指出「少说多问」出自《关键7问》，与《问题即答案》的「广播→接收」区别在于**有没有对话对象**",
+      "notes": "本路由存在的唯一理由：解决三册之间的混淆"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "帮我梳理一下这三本书的能力清单，我要按场景找工具",
+      "expected_behavior": "应激活 questioning-power，输出 20 个能力的意图索引，并指向 references/cross-book-routing.md",
+      "notes": "索引类查询是本路由的核心用途"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "下属跟我抱怨了一堆困难，我该怎么接话？",
+      "expected_behavior": "不应停留在 questioning-power，应立即分流到 coaching-habit 并加载 AWE 追问卡",
+      "notes": "路由诱饵：场景已明确属于某一册，本路由应立刻让位，不要在路由层展开方法论"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "线上服务挂了，所有请求 500，怎么恢复？",
+      "expected_behavior": "不应激活 questioning-power（也不应分流到任何一册），直接给指令性排查步骤",
+      "notes": "边界诱饵：紧急危机，三册都明确排除"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我既想跟我的组员好好谈一次（他最近状态很差），又想判断他给我的那组数据是不是可靠，怎么办？",
+      "expected_behavior": "应激活 questioning-power，明确指出这是**跨域场景**，可分两段处理：对话部分用 coaching-habit（AWE + 焦点问题），数据部分用 asking-the-right-questions（证据效力与数据欺骗性）；且两段不要混在同一轮对话里做",
+      "notes": "边界：跨域场景是路由层唯一应当「加载 2 张卡」的情形，且必须明确分段"
+    },
+    {
+      "id": "edge-02",
+      "type": "edge_case",
+      "prompt": "这些书的内容是从网上搜来的吗？可靠吗？",
+      "expected_behavior": "应如实披露：三册均无本地书籍文本，语料由网络检索构建（8／11／5 个来源），《问题即答案》的问题风暴有作者官网一手 Toolkit PDF；并列出被淘汰未成卡的三个单元",
+      "notes": "边界：溯源与可信度披露 —— 材料局限已在 SKILL.md 中写明，必须如实回答而非粉饰"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "should_not_trigger 容错为 0。本路由的核心失败模式是「在路由层展开方法论而不分流」，should-not-trigger-01 专门测这一点。"
+}

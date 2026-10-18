@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>提问力知识库 — 三书 20 卡 · 骨架 · 21 天计划</title>
+<style>
+:root{
+  --bg:#f6f7f9; --panel:#ffffff; --line:#e3e7ed; --line2:#eef1f5;
+  --tx:#1b2331; --tx2:#5b6779; --tx3:#8b95a5;
+  --b1:#2563eb; --b1bg:#eef4ff;
+  --b2:#7c3aed; --b2bg:#f3efff;
+  --b3:#ea580c; --b3bg:#fff2e8;
+  --ok:#0f9d58; --okbg:#e8f6ee;
+  --warn:#c2410c;
+  --r:10px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:var(--bg); color:var(--tx); line-height:1.65; font-size:15px;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 80px}
+
+/* header */
+header{background:var(--panel);border-bottom:1px solid var(--line);padding:26px 0 22px;margin-bottom:0}
+header h1{font-size:23px;letter-spacing:-.01em;font-weight:650}
+header .sub{color:var(--tx2);font-size:13.5px;margin-top:6px}
+.stats{display:flex;gap:22px;margin-top:16px;flex-wrap:wrap}
+.stat{font-size:12.5px;color:var(--tx2)}
+.stat b{font-size:19px;color:var(--tx);font-weight:650;display:block;line-height:1.2}
+
+/* tabs */
+nav{position:sticky;top:0;z-index:50;background:var(--panel);border-bottom:1px solid var(--line);display:flex;gap:2px;padding:0 20px;overflow-x:auto}
+nav .inner{max-width:1180px;margin:0 auto;display:flex;gap:2px;width:100%}
+.tab{
+  background:none;border:none;padding:13px 16px;font-size:14px;color:var(--tx2);cursor:pointer;
+  font-family:inherit;border-bottom:2.5px solid transparent;white-space:nowrap;font-weight:500;
+}
+.tab:hover{color:var(--tx)}
+.tab.on{color:var(--tx);border-bottom-color:var(--tx);font-weight:600}
+.pane{display:none;padding-top:28px}
+.pane.on{display:block}
+
+/* generic */
+h2.sec{font-size:18px;font-weight:650;margin-bottom:4px}
+p.lead{color:var(--tx2);font-size:13.5px;margin-bottom:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(max-width:860px){.grid3,.grid2{grid-template-columns:1fr}}
+
+/* decision tree */
+.tree{display:flex;flex-direction:column;align-items:center;gap:0}
+.node-top{
+  background:var(--tx);color:#fff;padding:11px 22px;border-radius:8px;font-size:14px;font-weight:600;
+}
+.stem{width:2px;height:22px;background:var(--line)}
+.rail{width:74%;height:2px;background:var(--line);position:relative}
+.branches{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;width:100%;margin-top:0}
+.branch{display:flex;flex-direction:column;align-items:center}
+.vline{width:2px;height:20px;background:var(--line)}
+@media(max-width:860px){.rail{display:none}.branches{grid-template-columns:1fr;margin-top:14px}.vline,.stem{display:none}}
+
+.bk{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px;width:100%}
+.bk-h{display:flex;align-items:baseline;gap:8px;margin-bottom:3px}
+.bk-h .dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+.bk-h h3{font-size:16px;font-weight:650}
+.bk-role{font-size:12px;padding:2px 8px;border-radius:20px;font-weight:600}
+.bk-meta{font-size:12px;color:var(--tx3);margin-bottom:8px}
+.bk-one{font-size:13px;color:var(--tx2);margin-bottom:12px;min-height:38px}
+.clist{display:flex;flex-direction:column;gap:5px}
+.ci{
+  display:flex;align-items:center;gap:8px;padding:6px 9px;border-radius:6px;font-size:13px;
+  cursor:pointer;border:1px solid var(--line2);background:#fcfcfd;transition:.12s;
+}
+.ci:hover{border-color:var(--tx3);background:#fff}
+.ci .imp{width:6px;height:6px;border-radius:50%;flex:0 0 auto}
+.imp-critical{background:#dc2626}
+.imp-high{background:#f59e0b}
+.imp-medium{background:#94a3b8}
+.ci .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ci .an{font-size:11px;color:var(--tx3);flex:0 0 auto}
+
+/* pitfalls */
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line2);vertical-align:top}
+th{font-size:12px;color:var(--tx3);font-weight:600;background:#fafbfc}
+tr:last-child td{border-bottom:none}
+.k{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;background:#f1f3f6;padding:1px 5px;border-radius:4px}
+
+/* library */
+.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.fbtn{
+  border:1px solid var(--line);background:var(--panel);padding:6px 13px;border-radius:20px;
+  font-size:13px;cursor:pointer;font-family:inherit;color:var(--tx2);
+}
+.fbtn:hover{border-color:var(--tx3)}
+.fbtn.on{background:var(--tx);color:#fff;border-color:var(--tx)}
+input.search{
+  border:1px solid var(--line);background:var(--panel);padding:7px 13px;border-radius:8px;
+  font-size:13.5px;font-family:inherit;color:var(--tx);flex:1;min-width:180px;
+}
+input.search:focus{outline:none;border-color:var(--b1)}
+.ccard{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);margin-bottom:9px;overflow:hidden}
+.cc-h{display:flex;align-items:center;gap:10px;padding:13px 16px;cursor:pointer}
+.cc-h:hover{background:#fafbfc}
+.cc-bar{width:3px;align-self:stretch;border-radius:2px;flex:0 0 auto;min-height:34px}
+.cc-t{flex:1;min-width:0}
+.cc-t .n{font-size:14.5px;font-weight:600}
+.cc-t .s{font-size:12.5px;color:var(--tx2);margin-top:2px}
+.cc-r{display:flex;align-items:center;gap:9px;flex:0 0 auto}
+.lv{font-size:11px;padding:2px 8px;border-radius:20px;font-weight:600}
+.lv-critical{background:#fee2e2;color:#b91c1c}
+.lv-high{background:#fef3c7;color:#a16207}
+.lv-medium{background:#eef1f5;color:#64748b}
+.st{font-size:11px;color:var(--tx3)}
+.st.done{color:var(--ok);font-weight:600}
+.chev{color:var(--tx3);font-size:12px;transition:.2s}
+.ccard.open .chev{transform:rotate(90deg)}
+.cc-b{display:none;padding:0 16px 16px;border-top:1px solid var(--line2);padding-top:14px}
+.ccard.open .cc-b{display:block}
+.sec-h{font-size:11.5px;font-weight:700;color:var(--tx3);letter-spacing:.05em;margin:14px 0 6px}
+.sec-h:first-child{margin-top:0}
+.cc-b p{font-size:13.5px;margin-bottom:8px;color:var(--tx)}
+.cc-b ul{margin:0 0 8px 0;padding-left:0;list-style:none}
+.cc-b li{font-size:13.5px;padding-left:17px;position:relative;margin-bottom:5px}
+.cc-b li::before{content:"";position:absolute;left:3px;top:9px;width:5px;height:5px;border-radius:50%;background:var(--tx3)}
+.cc-b li.num{list-style:none;counter-increment:s}
+blockquote{border-left:3px solid var(--line);padding:2px 0 2px 12px;color:var(--tx2);font-size:13px;margin-bottom:8px;font-style:normal}
+
+/* plan */
+.prin{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px}
+@media(max-width:860px){.prin{grid-template-columns:1fr}}
+.pri{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.pri b{font-size:13.5px;display:block;margin-bottom:3px}
+.pri span{font-size:12.5px;color:var(--tx2)}
+.pri i{font-style:normal;font-size:11.5px;color:var(--tx3);display:block;margin-top:5px}
+.day{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--r);margin-bottom:8px;overflow:hidden;
+}
+.day-h{display:flex;align-items:center;gap:12px;padding:12px 15px;cursor:pointer}
+.day-h:hover{background:#fafbfc}
+.dnum{
+  width:34px;height:34px;border-radius:8px;background:#f1f3f6;color:var(--tx);
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:650;flex:0 0 auto;
+}
+.day.done .dnum{background:var(--okbg);color:var(--ok)}
+.dt{flex:1;min-width:0}
+.dt .t{font-size:14px;font-weight:600}
+.dt .d{font-size:12.5px;color:var(--tx2);margin-top:1px}
+.ph{font-size:11px;padding:2px 8px;border-radius:20px;background:#f1f3f6;color:var(--tx2);flex:0 0 auto}
+.day-b{display:none;padding:0 15px 15px}
+.day.open .day-b{display:block}
+.step{margin-top:10px}
+.step .lb{font-size:11.5px;font-weight:700;color:var(--tx3);letter-spacing:.04em;margin-bottom:4px}
+.step .ct{font-size:13.5px}
+.chk{display:flex;align-items:center;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line2)}
+.chk button{
+  border:1px solid var(--line);background:var(--panel);padding:6px 14px;border-radius:7px;
+  font-size:13px;cursor:pointer;font-family:inherit;color:var(--tx2);
+}
+.chk button:hover{border-color:var(--ok);color:var(--ok)}
+.chk button.on{background:var(--okbg);border-color:var(--ok);color:var(--ok);font-weight:600}
+
+/* action */
+.ifthen{display:flex;flex-direction:column;gap:8px}
+.ifrow{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch;background:var(--panel);
+  border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+@media(max-width:860px){.ifrow{grid-template-columns:1fr;gap:6px}}
+.ifc{font-size:13.5px}
+.ifc .l{font-size:11px;color:var(--tx3);font-weight:600;display:block;margin-bottom:2px}
+.arrow{display:flex;align-items:center;color:var(--tx3);font-size:16px}
+.today{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.rq{display:flex;flex-direction:column;gap:7px}
+.rqi{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;background:#fafbfc;border:1px solid var(--line2);font-size:13.5px}
+.rqi .tag{font-size:11px;padding:2px 7px;border-radius:5px;background:#eef1f5;color:var(--tx2);flex:0 0 auto}
+.rqi .r{flex:1}
+.rqi button{border:1px solid var(--line);background:#fff;padding:4px 11px;border-radius:6px;font-size:12.5px;cursor:pointer;font-family:inherit;color:var(--tx2)}
+.rqi button:hover{border-color:var(--ok);color:var(--ok)}
+.empty{color:var(--tx3);font-size:13px;padding:14px;text-align:center;background:#fafbfc;border-radius:8px;border:1px dashed var(--line)}
+
+/* quiz */
+.qbox{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:22px;max-width:720px}
+.qprog{font-size:12.5px;color:var(--tx3);margin-bottom:14px;display:flex;justify-content:space-between}
+.qs{font-size:15.5px;font-weight:600;margin-bottom:16px;line-height:1.6}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{
+  border:1px solid var(--line);background:#fcfcfd;border-radius:8px;padding:11px 14px;font-size:14px;
+  cursor:pointer;text-align:left;font-family:inherit;color:var(--tx);transition:.12s;
+}
+.opt:hover:not(:disabled){border-color:var(--tx3);background:#fff}
+.opt.right{background:var(--okbg);border-color:var(--ok);color:#0b7a45;font-weight:600}
+.opt.wrong{background:#fdecea;border-color:#e57373;color:#b3261e}
+.opt:disabled{cursor:default}
+.qfb{margin-top:15px;padding-top:15px;border-top:1px solid var(--line2);font-size:13.5px;display:none}
+.qfb.show{display:block}
+.qfb .why{color:var(--tx2);margin-top:6px}
+.qnext{margin-top:14px;border:1px solid var(--tx);background:var(--tx);color:#fff;padding:8px 18px;border-radius:8px;font-size:13.5px;cursor:pointer;font-family:inherit}
+.qscore{margin-top:14px;font-size:13px;color:var(--tx2)}
+
+footer{margin-top:50px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--tx3)}
+.note{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:12px 14px;font-size:13px;color:#78350f;margin-bottom:16px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap" style="padding-bottom:0">
+    <h1>提问力知识库</h1>
+    <div class="sub">《关键7问》·《问题即答案》·《学会提问》— 3 册 20 张能力卡的骨架、内化路径与行动清单</div>
+    <div class="stats">
+      <div class="stat"><b>3</b>册</div>
+      <div class="stat"><b>20</b>张能力卡</div>
+      <div class="stat"><b id="st-prog">0</b>已学</div>
+      <div class="stat"><b id="st-app">0</b>次实操</div>
+      <div class="stat"><b id="st-due">0</b>待复习</div>
+    </div>
+  </div>
+</header>
+
+<nav><div class="inner">
+  <button class="tab on" data-p="skeleton">骨架</button>
+  <button class="tab" data-p="library">能力库</button>
+  <button class="tab" data-p="plan">21 天计划</button>
+  <button class="tab" data-p="action">行动打卡</button>
+  <button class="tab" data-p="quiz">自测</button>
+</div></nav>
+
+<div class="wrap">
+
+<!-- ============ 骨架 ============ -->
+<div class="pane on" id="skeleton">
+  <h2 class="sec">一、整套知识的骨架</h2>
+  <p class="lead">先记住这一张图。后面 20 张卡都挂在这三个分支上——没有这张图，卡片是散的。</p>
+
+  <div class="card" style="margin-bottom:18px">
+    <div class="tree">
+      <div class="node-top">遇到一个「该问什么 / 怎么问 / 信不信」的时刻</div>
+      <div class="stem"></div>
+      <div class="rail"></div>
+      <div class="branches" id="tree-books"></div>
+    </div>
+  </div>
+
+  <div class="grid3" style="margin-bottom:18px">
+    <div class="card"><div class="sec-h">分流的唯一判据</div>
+      <p style="font-size:13.5px">三册不是三种难度，是<b>三种提问对象</b>。判断顺序固定：先看有没有对话对象，再看是要生成还是检验。</p>
+      <ul style="font-size:13px;color:var(--tx2);margin-top:8px">
+        <li>有对话对象，想让他自己想清楚 → <b>关键7问</b></li>
+        <li>自己在卡住，要换个问法 → <b>问题即答案</b></li>
+        <li>拿到一个说法，要判断真假 → <b>学会提问</b></li>
+      </ul>
+    </div>
+    <div class="card"><div class="sec-h">为什么必须先立骨架</div>
+      <p style="font-size:13.5px">认知心理学里的<b>先行组织者</b>效应：已有图式的人学新知识， retention 和迁移都显著更好。骨架就是那个挂卡片的钩子。</p>
+      <p style="font-size:13px;color:var(--tx2);margin-top:8px">Day 1 的任务就是这张图，不学任何卡。</p>
+    </div>
+    <div class="card"><div class="sec-h">不必平均用力</div>
+      <p style="font-size:13.5px">20 张卡不值得都练到自动化。按重要度分三档用力：</p>
+      <ul style="font-size:13px;color:var(--tx2);margin-top:8px">
+        <li><span class="imp-critical" style="display:inline-block;width:6px;height:6px;border-radius:50%"></span> critical 6 张 → 练到条件反射</li>
+        <li><span class="imp-high" style="display:inline-block;width:6px;height:6px;border-radius:50%"></span> high 6 张 → 要能想起来</li>
+        <li><span class="imp-medium" style="display:inline-block;width:6px;height:6px;border-radius:50%"></span> medium 8 张 → 知道存在，用时能查</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sec" style="margin-top:26px">二、五组最容易用错的边界</h2>
+  <p class="lead">这几组卡片长得像，用错会互相帮倒忙。判据在「怎么切分」那一列。</p>
+  <div class="card" style="padding:0;overflow:hidden">
+    <table id="pitfalls">
+      <thead><tr><th style="width:22%">关系</th><th style="width:30%">A</th><th style="width:30%">B</th><th>怎么切分</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="note" style="margin-top:18px">
+    <b>三册共同的盲点（用的时候自己补上）：</b>三本书都写于生成式 AI 普及前。2026 年答案极度廉价，稀缺的已从「产出问题」变成「判断哪个问题值得追」——这部分三册都着墨很轻。另外《学会提问》只教了质疑，没教「该信谁」，这另一半需要你自己补。
+  </div>
+</div>
+
+<!-- ============ 能力库 ============ -->
+<div class="pane" id="library">
+  <h2 class="sec">能力库：20 张卡</h2>
+  <p class="lead">点开看原文六段（R 原文 / I 自述 / A1 案例 / A2 触发 / E 步骤 / B 边界）。内容直接取自技能包，未做改写。</p>
+  <div class="filters">
+    <button class="fbtn on" data-f="all">全部 20</button>
+    <button class="fbtn" data-f="coaching-habit">关键7问</button>
+    <button class="fbtn" data-f="questions-are-the-answer">问题即答案</button>
+    <button class="fbtn" data-f="asking-the-right-questions">学会提问</button>
+    <span style="width:8px"></span>
+    <button class="fbtn" data-f="critical">critical</button>
+    <button class="fbtn" data-f="high">high</button>
+    <button class="fbtn" data-f="medium">medium</button>
+    <input class="search" id="q" placeholder="搜关键词，如「卡住」「数据」「建议」">
+  </div>
+  <div id="cards"></div>
+</div>
+
+<!-- ============ 计划 ============ -->
+<div class="pane" id="plan">
+  <h2 class="sec">21 天内化计划</h2>
+  <p class="lead">不是按书的顺序读，是按「记忆形成的客观规律」排的。下面先说依据，再说安排。</p>
+
+  <h3 style="font-size:14px;font-weight:650;margin:20px 0 10px">这套安排依据的 6 条实证结论</h3>
+  <div class="prin" id="principles"></div>
+
+  <h3 style="font-size:14px;font-weight:650;margin:22px 0 10px">每天的固定结构（约 25 分钟）</h3>
+  <div class="card" style="margin-bottom:18px">
+    <div class="grid3">
+      <div><div class="sec-h">① 忆（5 分钟）</div><p style="font-size:13px">先闭卷回忆该复习的卡：它解决什么、触发信号是什么、第一步做什么。<b>想不起来就别翻书先，硬想 30 秒</b>——这个「想不起来」的过程本身就在强化记忆。</p></div>
+      <div><div class="sec-h">② 学（10 分钟）</div><p style="font-size:13px">读新卡的<b>触发信号</b>，先自己想「我会怎么用」，再读步骤对照。自己先生成一遍再对照，记住的是你自己的版本。</p></div>
+      <div><div class="sec-h">③ 用（10 分钟）</div><p style="font-size:13px">当天必须在真实场景用一次，并记一句话：用了什么、对方/结果如何。<b>不用等于没学</b>——技能不是知识，是反应。</p></div>
+    </div>
+  </div>
+
+  <h3 style="font-size:14px;font-weight:650;margin:22px 0 10px">逐日安排</h3>
+  <div id="days"></div>
+</div>
+
+<!-- ============ 行动 ============ -->
+<div class="pane" id="action">
+  <h2 class="sec">行动计划：把卡片绑到具体时刻</h2>
+  <p class="lead">「我会记得用」是最靠不住的。下面这些 if-then 绑定，是把卡片挂到具体情境线索上——这是有实证支持的行为设计方法（执行意图）。</p>
+
+  <h3 style="font-size:14px;font-weight:650;margin:20px 0 10px">执行意图绑定表（先挑 3 条抄到手机备忘录）</h3>
+  <div class="ifthen" id="ifthen"></div>
+
+  <h3 style="font-size:14px;font-weight:650;margin:24px 0 10px">今天的复习队列</h3>
+  <div class="today" style="margin-bottom:18px">
+    <div class="rq" id="reviewq"></div>
+    <div style="font-size:12px;color:var(--tx3);margin-top:10px">
+      按 1 / 3 / 7 / 14 天间隔自动生成。到期未复习的卡会出现在这里。闭卷回忆后再点「已复习」。
+    </div>
+  </div>
+
+  <h3 style="font-size:14px;font-weight:650;margin:24px 0 10px">实操登记表</h3>
+  <div class="today">
+    <div style="font-size:13px;color:var(--tx2);margin-bottom:12px">每次真实用过就登记一次，写一句话结果。无反馈的重复不产生改进——这张表就是你的反馈源。</div>
+    <div class="filters">
+      <select id="log-card" style="border:1px solid var(--line);padding:7px 10px;border-radius:7px;font-size:13px;font-family:inherit;background:#fff"></select>
+      <input class="search" id="log-note" placeholder="一句话：在什么场景用了，结果如何">
+      <button class="fbtn" id="log-add" style="background:var(--tx);color:#fff;border-color:var(--tx)">登记</button>
+    </div>
+    <div id="loglist" style="margin-top:12px"></div>
+  </div>
+
+  <div class="note" style="margin-top:18px">
+    <b>关于「21 天养成习惯」：</b>这是个误传。Lally 等人 2010 年的实测中，行为达到自动化的<b>中位是 66 天</b>（范围 18–254 天）。所以这 21 天解决的是「知道 + 用过一遍」，不是「自动就会」。21 天之后，挑 3 张最高频的卡继续练到自动化。
+  </div>
+</div>
+
+<!-- ============ 自测 ============ -->
+<div class="pane" id="quiz">
+  <h2 class="sec">自测：看见情境，先想用哪张卡</h2>
+  <p class="lead">这是全套里最值钱的功能。主动回忆（闭卷提取）的长期保留率显著高于重读——所以别只用「能力库」翻卡片，多用这里。</p>
+  <div class="qbox">
+    <div class="qprog"><span id="qp">第 1 题</span><span id="qs"></span></div>
+    <div class="qs" id="qtext"></div>
+    <div class="opts" id="qopts"></div>
+    <div class="qfb" id="qfb"></div>
+    <button class="qnext" id="qnext" style="display:none">下一题</button>
+    <div class="qscore" id="qscore"></div>
+  </div>
+</div>
+
+<footer>
+  内容源：三册技能包（cangjie 蒸馏产物）· 能力卡原文未经改写 · 学习计划依据见「21 天计划」页首
+</footer>
+</div>
+
+<script>
+const KB = __KB_DATA__;
+
+const BOOKC = { "coaching-habit":"#2563eb", "questions-are-the-answer":"#7c3aed", "asking-the-right-questions":"#ea580c" };
+const IMPL  = { critical:"必须熟练", high:"要能想起来", medium:"知道即可" };
+const SECNAME = { R:"R — 原文", I:"I — 自述", A1:"A1 — 书中案例", A2:"A2 — 触发", E:"E — 执行步骤", B:"B — 边界" };
+const SECFULL = { R:"原文", I:"自述（内核）", A1:"书中案例", A2:"触发信号", E:"执行步骤", B:"边界与失败模式" };
+
+const byId = {};
+KB.cards.forEach(c => byId[c.id] = c);
+
+/* ---------- storage ---------- */
+const KEY = "qpower_v1";
+let P = JSON.parse(localStorage.getItem(KEY) || '{"learned":{},"reviewed":{},"applied":[],"days":[]}');
+function save(){ localStorage.setItem(KEY, JSON.stringify(P)); }
+const today = () => new Date().toISOString().slice(0,10);
+const dayDiff = (a,b) => Math.round((new Date(b) - new Date(a)) / 86400000);
+
+/* ---------- 骨架 ---------- */
+function renderTree(){
+  const el = document.getElementById("tree-books");
+  el.innerHTML = KB.books.map(b => `
+    <div class="branch">
+      <div class="vline"></div>
+      <div class="bk" style="border-top:3px solid ${b.color}">
+        <div class="bk-h">
+          <span class="dot" style="background:${b.color}"></span>
+          <h3>${b.title}</h3>
+          <span class="bk-role" style="background:${b.color}18;color:${b.color}">${b.role}</span>
+        </div>
+        <div class="bk-meta">${b.author} · 提问对象：${b.ask_object}</div>
+        <div class="bk-one">${b.oneliner}</div>
+        <div class="clist">
+          ${b.cards.map(c => `
+            <div class="ci" data-card="${c.id}">
+              <span class="imp imp-${c.importance}" title="${IMPL[c.importance]}"></span>
+              <span class="nm">${c.name}</span>
+              <span class="an">${c.steps.length}步</span>
+            </div>`).join("")}
+        </div>
+      </div>
+    </div>`).join("");
+  el.querySelectorAll(".ci").forEach(n => n.onclick = () => openCard(n.dataset.card));
+}
+
+const PITFALLS = [
+  ["最易混","建议怪兽拦截 / 少说多问","广播 → 接收模式","<b>看有没有对话对象</b>：有 → 关键7问；没有（阅读/独处/查资料）→ 问题即答案"],
+  ["易混","AWE 追问","问题风暴","<b>看逐个还是批量</b>：对话里一句句追问 → AWE；一次性 4 分钟批量产出 → 问题风暴"],
+  ["易混","焦点问题","问题重构","<b>看收敛还是换框架</b>：在既有困难里挑卡点 → 焦点；换一套问题表述 → 重构"],
+  ["方向相反","催化性问题配方","十大批判性问题清单","<b>创造 vs 检验</b>：构造进攻性问题 → 配方；评估别人的论证 → 清单"],
+  ["互补","战略问题 yes→no","猴子优先","战略问题逼出<b>放弃什么</b>；猴子优先指出<b>先攻哪个</b>"],
+  ["相邻","让错误可见","挖出未说出口的假设","前者让<b>自己的错误浮出来</b>（动态、需他人）；后者挖<b>静态论证的隐含前提</b>（书面）"],
+];
+function renderPitfalls(){
+  document.querySelector("#pitfalls tbody").innerHTML = PITFALLS.map(p =>
+    `<tr><td><span class="k">${p[0]}</span></td><td>${p[1]}</td><td>${p[2]}</td><td>${p[3]}</td></tr>`).join("");
+}
+
+/* ---------- 能力库 ---------- */
+let filter = "all", kw = "";
+function renderCards(){
+  const box = document.getElementById("cards");
+  const books = filter.startsWith("coach")||filter.startsWith("questions")||filter.startsWith("asking")
+    ? KB.books.filter(b=>b.slug===filter) : KB.books;
+  let html = "";
+  books.forEach(b => {
+    const cs = b.cards.filter(c =>
+      (["critical","high","medium"].includes(filter) ? c.importance===filter : true) &&
+      (!kw || (c.name+c.summary+c.signals.join()+c.steps.join()).toLowerCase().includes(kw))
+    );
+    if(!cs.length) return;
+    html += `<div style="display:flex;align-items:center;gap:8px;margin:16px 0 8px">
+      <span class="dot" style="width:9px;height:9px;border-radius:50%;background:${b.color}"></span>
+      <b style="font-size:14.5px">${b.title}</b>
+      <span style="font-size:12px;color:var(--tx3)">${cs.length} 张</span></div>`;
+    html += cs.map(c => {
+      const l = P.learned[c.id];
+      const st = l ? `<span class="st done">已学 ${dayDiff(l,today())}天前</span>` : `<span class="st">未学</span>`;
+      return `<div class="ccard" id="cc-${c.id}">
+        <div class="cc-h" data-card="${c.id}">
+          <span class="cc-bar" style="background:${b.color}"></span>
+          <div class="cc-t"><div class="n">${c.name}</div><div class="s">${c.summary}</div></div>
+          <div class="cc-r">
+            <span class="lv lv-${c.importance}">${c.importance}</span>
+            ${st}
+            <span class="chev">▶</span>
+          </div>
+        </div>
+        <div class="cc-b">${renderSections(c)}</div>
+      </div>`;
+    }).join("");
+  });
+  box.innerHTML = html || `<div class="empty">没有匹配的卡片</div>`;
+  box.querySelectorAll(".cc-h").forEach(h => h.onclick = () => {
+    const c = h.parentElement; c.classList.toggle("open");
+    if(c.classList.contains("open") && !P.learned[h.dataset.card]){
+      P.learned[h.dataset.card] = today(); save(); refreshStats(); renderReview(); renderPlanProgress();
+    }
+  });
+}
+function renderSections(c){
+  let h = "";
+  ["R","I","A1","A2","E","B"].forEach(k => {
+    const blocks = c.sections[k] || [];
+    if(!blocks.length) return;
+    h += `<div class="sec-h">${SECNAME[k]}</div>`;
+    let lis = [];
+    blocks.forEach(b => {
+      if(b.t === "p") h += `<p>${md(b.v)}</p>`;
+      else if(b.t === "q") h += `<blockquote>${md(b.v)}</blockquote>`;
+      else if(b.t === "li") lis.push(`<li class="num">${md(b.v)}</li>`);
+      else if(b.t === "ul") lis.push(`<li>${md(b.v)}</li>`);
+    });
+    if(lis.length) h += `<ul>${lis.join("")}</ul>`;
+  });
+  return h;
+}
+function esc(s){
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+function md(s){
+  return esc(s).replace(/\*\*(.+?)\*\*/g,"<b>$1</b>").replace(/`(.+?)`/g,'<span class="k">$1</span>');
+}
+function openCard(id){
+  document.querySelector('.tab[data-p="library"]').click();
+  setTimeout(() => {
+    const c = document.getElementById("cc-"+id);
+    if(c){ c.classList.add("open"); c.scrollIntoView({behavior:"smooth",block:"center"}); }
+  }, 60);
+}
+
+/* ---------- 计划 ---------- */
+const PRINCIPLES = [
+  ["提取练习（Testing effect）","闭卷回忆一次，一周后的保留率显著高于再读一遍。所以每天第一件事是「忆」，不是「读」。","Roediger & Karpicke 2006"],
+  ["间隔效应（Spacing）","复习间隔应随掌握度拉长：1 → 3 → 7 → 14 天。集中复习当时顺，忘得快。","Cepeda et al. 2006"],
+  ["交错练习（Interleaving）","混合三册练习当时更慢、更挫败，但迁移成绩显著好于按册分块练。所以 Day 20 是打乱的。","Rohrer & Taylor 2007"],
+  ["变式练习（Variability）","同一张卡在 3 个以上不同场景用过，才形成可迁移的图式。用过一次不算掌握。","Schmidt & Bjork 1992"],
+  ["执行意图（If-then）","把行为绑到具体情境线索（如果…那么…），执行率显著高于「我会记得」。效果量约 d=0.65。","Gollwitzer 1999"],
+  ["认知负荷（4±2）","工作记忆一次容纳约 4 个组块。所以每天只吃 1 张新卡，贪多会两头空。","Cowan 2001"],
+];
+const PLAN = [
+  [1,"立骨架",[],"默画上面的三分支图；写下你最近遇到的 3 个真实场景，判断各自该走哪一册。","不学卡。这一天的产出是那张图——后面 20 张卡全挂在它上面。"],
+  [2,"锚点",["awe-question"],"今天任何一次对话里，连问 3 次「还有什么吗？」，全程不给建议。","第一天只练一张，且是最万能的那张。"],
+  [3,"锚点",["question-burst"],"挑一件卡住的事，做一次完整 4 分钟问题风暴（2 分钟陈述 + 只问不答 + 挑 1–3 条）。","问题风暴有明确仪式和时长，是最容易形成习惯的一张。"],
+  [4,"锚点",["critical-questions-checklist"],"找一条今天刷到的观点/数据，用十大清单过一遍，写出条件化结论。","到今天为止三册各有一张锚点，骨架上挂上东西了。"],
+  [5,"主力",["focus-question-for-you"],"遇到讨论绕圈时，用「对你而言，这里真正的挑战是什么？」切入。"],
+  [6,"主力",["reframe-the-question"],"挑一个反复卡住的问题，圈出里面未经检验的限定，用猴子优先挑主攻点。"],
+  [7,"主力",["surface-hidden-assumptions"],"找一次和别人的分歧，判断它停在价值观假设还是描述性假设。","7 天时做第一次自测（见「自测」页），检验前 6 张。"],
+  [8,"主力",["advice-monster-interception"],"记录今天有几次想给建议，拦截至少 1 次，用 60 秒以内的拦截句。"],
+  [9,"主力",["strategic-question-yes-no"],"面对一件「要不要接」的事，写两张「否」清单：省略的否、委托的否。"],
+  [10,"主力",["catalytic-question-recipes"],"把一个问题改写成 Why / What if / How 三个版本，挑最让你不舒服的那个。"],
+  [11,"主力",["argument-triple"],"拆一篇文章：论题是什么、结论是什么、理由+证据是什么。"],
+  [12,"主力",["new-habit-formula"],"给一个你自己「知道但做不到」的习惯，写完整的触发—动作替换句。"],
+  [13,"主力",["alternative-causes"],"对一个「A 导致 B」的说法，想出至少 3 个替代解释。","今天把前 12 张全部过一遍自测。"],
+  [14,"补齐",["evidence-and-data-check"],"核查一个你正准备引用的数字：基数、口径、平均数还是中位数。"],
+  [15,"补齐",["gray-thinking-conditional"],"把一个非黑即白的结论，改写成带条件的灰度结论。"],
+  [16,"补齐",["lazy-question-how-can-i-help"],"遇到含糊请求时，先问「我可以如何帮助你？」，再决定答应到什么程度。"],
+  [17,"补齐",["kickstart-3p","learning-question-double-loop"],"一次对话用它开场（你最近在想什么），结尾问「什么最有用」。","成对学：对话的开与合。"],
+  [18,"补齐",["manufacture-discomfort","broadcast-to-receive"],"做一件改变输入的事（走陌生路线 / 读一篇反对意见），再留 20 分钟只输入不输出。","成对学：都在输入侧。"],
+  [19,"补齐",["make-errors-visible"],"在小组合议或自己的方案里，主动问一次「哪里可能错了？」"],
+  [20,"交错",[],"3 个真实场景，<b>不许查表</b>，先想用哪张卡，用完再核对。","交错练习：打乱三册，当时会更慢，但这是迁移能力真正长出来的地方。"],
+  [21,"收口",[],"全套自测一遍；挑出你最常遇到的 3 个场景，把对应 3 张卡定为接下来继续练到自动化的目标。","21 天结束≠自动化。习惯自动化中位 66 天，后面靠这 3 张继续。"],
+];
+function renderPrinciples(){
+  document.getElementById("principles").innerHTML = PRINCIPLES.map(p =>
+    `<div class="pri"><b>${p[0]}</b><span>${p[1]}</span><i>${p[2]}</i></div>`).join("");
+}
+function renderPlan(){
+  document.getElementById("days").innerHTML = PLAN.map(([d,ph,ids,task,note]) => {
+    const done = P.days.includes(d);
+    const names = ids.map(i => byId[i] ? byId[i].name : i).join(" ＋ ");
+    return `<div class="day ${done?"done":""}" id="d${d}">
+      <div class="day-h" data-d="${d}">
+        <div class="dnum">${d}</div>
+        <div class="dt">
+          <div class="t">${ids.length ? "学："+names : task.replace(/<[^>]+>/g,"")}</div>
+          <div class="d">${ids.length ? task : ""}</div>
+        </div>
+        <span class="ph">${ph}</span>
+      </div>
+      <div class="day-b">
+        ${ids.length?`<div class="step"><div class="lb">新卡</div><div class="ct">${names}　<span style="color:var(--tx3);font-size:12.5px">（点卡名看原文）</span></div></div>`:""}
+        <div class="step"><div class="lb">今天的行动</div><div class="ct">${task}</div></div>
+        <div class="step"><div class="lb">忆（5 分钟前先做）</div><div class="ct">${reviewHint(d)}</div></div>
+        ${note?`<div class="step"><div class="lb">为什么这么排</div><div class="ct" style="color:var(--tx2)">${note}</div></div>`:""}
+        <div class="chk"><button data-d="${d}" class="${done?"on":""}">${done?"已完成 ✓":"标记完成"}</button></div>
+      </div>
+    </div>`;
+  }).join("");
+  document.querySelectorAll(".day-h").forEach(h => h.onclick = () => h.parentElement.classList.toggle("open"));
+  document.querySelectorAll(".chk button").forEach(b => b.onclick = e => {
+    e.stopPropagation();
+    const d = +b.dataset.d;
+    if(P.days.includes(d)) P.days = P.days.filter(x=>x!==d); else P.days.push(d);
+    save(); renderPlanProgress(); renderPlan();
+  });
+  renderPlanProgress();
+}
+function reviewHint(d){
+  // 该复习：学后 1/3/7/14 天的卡
+  const out = [];
+  for(let i=1;i<d;i++){
+    (PLAN[i-1]||[[],[],[]])[2].forEach(id => {
+      const gap = d - i;
+      if([1,3,7,14].includes(gap)) out.push(byId[id] ? byId[id].name : id);
+    });
+  }
+  return out.length ? "闭卷回忆：" + out.join("、") : "暂无到期复习，可自测任意旧卡";
+}
+function renderPlanProgress(){
+  PLAN.forEach(([d,ph,ids]) => {
+    const el = document.getElementById("d"+d);
+    if(el) el.classList.toggle("done", P.days.includes(d));
+  });
+}
+
+/* ---------- 行动 ---------- */
+const IFTHEN = [
+  ["awe-question","对方说完一句话就停了，或者问你「你觉得呢」","先说「还有什么吗？」，问满三次，不接自己的看法"],
+  ["advice-monster-interception","你脑子里已经想好答案，正准备开口","闭嘴 5 秒，改问一句；把方案留到对方说完第 3 个答案之后"],
+  ["question-burst","盯着一件事超过 20 分钟毫无进展","开一次 4 分钟问题风暴：2 分钟陈述，然后只问不答"],
+  ["reframe-the-question","换了三四个方案都不奏效","停下来检查问题里的限定，换一把钥匙，而不是更用力"],
+  ["critical-questions-checklist","刷到「研究显示 / 数据表明 / 专家称」","过一遍清单第 7、8、9 项：替代原因、数据欺骗、遗漏信息"],
+  ["strategic-question-yes-no","有人问你「要不要接这个」","先写两张「否」清单，再决定答不答应"],
+  ["focus-question-for-you","讨论绕圈超过 10 分钟","问「对你而言，这里真正的挑战是什么？」"],
+  ["surface-hidden-assumptions","双方数据都摆齐了还是吵不拢","停止摆证据，去挖价值观假设 vs 描述性假设"],
+];
+function renderIfThen(){
+  document.getElementById("ifthen").innerHTML = IFTHEN.map(([id,cond,act]) => {
+    const c = byId[id]; const b = KB.books.find(x=>x.slug===c.book);
+    return `<div class="ifrow">
+      <div class="ifc"><span class="l">如果（情境线索）</span>${cond}</div>
+      <div class="arrow">→</div>
+      <div class="ifc"><span class="l">那么（动作）· <span style="color:${b.color}">${c.name}</span></span>${act}</div>
+    </div>`;
+  }).join("");
+}
+function dueReviews(){
+  const out = [];
+  Object.keys(P.learned).forEach(id => {
+    const done = P.reviewed[id] || [];
+    const gap = dayDiff(P.learned[id], today());
+    [1,3,7,14].forEach(g => {
+      if(gap >= g && !done.includes(g)) out.push({id, g, overdue: gap-g});
+    });
+  });
+  return out.sort((a,b)=>b.overdue-a.overdue);
+}
+function renderReview(){
+  const q = dueReviews();
+  const el = document.getElementById("reviewq");
+  if(!q.length){ el.innerHTML = `<div class="empty">今天没有到期复习。可以先去「能力库」翻一张新卡，或直接自测。</div>`; return; }
+  el.innerHTML = q.slice(0,8).map(r => {
+    const c = byId[r.id]; const b = KB.books.find(x=>x.slug===c.book);
+    return `<div class="rqi">
+      <span class="tag" style="background:${b.color}18;color:${b.color}">${r.g}天</span>
+      <span class="r"><b>${c.name}</b>　<span style="color:var(--tx3);font-size:12.5px">先闭卷回忆：触发信号 + 第一步</span></span>
+      <button data-id="${r.id}" data-g="${r.g}">已复习</button>
+    </div>`;
+  }).join("");
+  el.querySelectorAll("button").forEach(btn => btn.onclick = () => {
+    const id = btn.dataset.id, g = +btn.dataset.g;
+    P.reviewed[id] = (P.reviewed[id]||[]).concat([g]);
+    save(); renderReview(); refreshStats();
+  });
+}
+function renderLog(){
+  const sel = document.getElementById("log-card");
+  if(!sel.options.length){
+    sel.innerHTML = KB.cards.map(c => `<option value="${c.id}">${c.name}</option>`).join("");
+  }
+  const list = document.getElementById("loglist");
+  if(!P.applied.length){ list.innerHTML = `<div class="empty">还没有登记。真实用过一次就来记一笔。</div>`; return; }
+  list.innerHTML = P.applied.slice().reverse().map(a => {
+    const c = byId[a.id]; const b = KB.books.find(x=>x.slug===c.book);
+    return `<div class="rqi"><span class="tag" style="background:${b.color}18;color:${b.color}">${a.date}</span>
+      <span class="r"><b>${c.name}</b> — ${a.note}</span></div>`;
+  }).join("");
+}
+document.getElementById("log-add").onclick = () => {
+  const id = document.getElementById("log-card").value;
+  const note = document.getElementById("log-note").value.trim();
+  if(!note){ alert("写一句话：在什么场景用了，结果如何"); return; }
+  P.applied.push({id, note, date: today()});
+  if(!P.learned[id]) P.learned[id] = today();
+  save(); document.getElementById("log-note").value = "";
+  renderLog(); refreshStats(); renderCards();
+};
+
+/* ---------- 自测 ---------- */
+let qi = 0, qright = 0, qdone = 0;
+function shuffled(a){ return a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).map(v=>v[1]); }
+function newQuestion(){
+  const pool = KB.cards.filter(c => c.signals.length);
+  const target = shuffled(pool)[0];
+  const others = shuffled(KB.cards.filter(c=>c.id!==target.id)).slice(0,3);
+  const opts = shuffled([target].concat(others));
+  document.getElementById("qp").textContent = "第 " + (qdone+1) + " 题";
+  document.getElementById("qtext").textContent = target.signals[0];
+  const ob = document.getElementById("qopts");
+  ob.innerHTML = "";
+  opts.forEach(o => {
+    const b = document.createElement("button");
+    b.className = "opt"; b.textContent = o.name;
+    b.onclick = () => {
+      ob.querySelectorAll(".opt").forEach(x=>x.disabled=true);
+      if(o.id === target.id){ b.classList.add("right"); qright++; }
+      else { b.classList.add("wrong"); opts.forEach(x=>{}); 
+        ob.querySelectorAll(".opt").forEach((x,i)=>{ if(opts[i].id===target.id) x.classList.add("right"); });
+      }
+      qdone++;
+      const fb = document.getElementById("qfb");
+      fb.className = "qfb show";
+      fb.innerHTML = `<b>${target.name}</b>　<span style="color:var(--tx3);font-size:12.5px">${IMPL[target.importance]}</span>
+        <div class="why">${target.summary}</div>
+        <div class="why" style="margin-top:8px"><b>第一步：</b>${target.steps[0]||"—"}</div>`;
+      document.getElementById("qnext").style.display = "inline-block";
+      document.getElementById("qs").textContent = `答对 ${qright} / ${qdone}`;
+    };
+    ob.appendChild(b);
+  });
+  document.getElementById("qfb").className = "qfb";
+  document.getElementById("qnext").style.display = "none";
+}
+document.getElementById("qnext").onclick = newQuestion;
+
+/* ---------- stats & tabs ---------- */
+function refreshStats(){
+  document.getElementById("st-prog").textContent = Object.keys(P.learned).length;
+  document.getElementById("st-app").textContent = P.applied.length;
+  document.getElementById("st-due").textContent = dueReviews().length;
+}
+document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
+  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("on"));
+  document.querySelectorAll(".pane").forEach(x=>x.classList.remove("on"));
+  t.classList.add("on");
+  document.getElementById(t.dataset.p).classList.add("on");
+  window.scrollTo({top:0,behavior:"smooth"});
+});
+document.querySelectorAll(".fbtn[data-f]").forEach(b => b.onclick = () => {
+  document.querySelectorAll(".fbtn[data-f]").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on"); filter = b.dataset.f; renderCards();
+});
+document.getElementById("q").oninput = e => { kw = e.target.value.trim().toLowerCase(); renderCards(); };
+
+renderTree(); renderPitfalls(); renderCards(); renderPrinciples(); renderPlan();
+renderIfThen(); renderReview(); renderLog(); refreshStats(); newQuestion();
+</script>
+</body>
+</html>

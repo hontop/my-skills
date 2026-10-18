@@ -1,0 +1,66 @@
+{
+  "skill": "asking-the-right-questions",
+  "version": "0.1.0",
+  "source_book": "学会提问（Asking the Right Questions） — [美] 尼尔·布朗 & 斯图尔特·基利",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "这条热搜说「某地推行新政策后犯罪率下降了 40%」，我能信吗？",
+      "expected_behavior": "应激活 asking-the-right-questions，加载 critical-questions-checklist，逐条过十个问题（尤其替代原因、数据基数、被省略的信息），输出条件化结论",
+      "notes": "典型场景：判断一条观点值不值得信"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我和室友关于「该不该考研」争论了很久，双方数据都摆了还是谁也说服不了谁",
+      "expected_behavior": "应激活 asking-the-right-questions，加载 surface-hidden-assumptions，指出分歧在假设层，分成价值观假设（不可证伪，只能澄清）与描述性假设（可检验）",
+      "notes": "「证据都摆齐了还是吵不拢」是假设挖掘的专属触发信号"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "有篇文章说「使用 XX 学习法的学生成绩明显更好，所以这个方法有效」，帮我挑挑毛病",
+      "expected_behavior": "应激活 asking-the-right-questions，加载 alternative-causes，构造 3 个竞争性假说（反向因果／第三变量／选择偏差）并给出区分方法，输出降格结论",
+      "notes": "典型的「相关当因果」，是替代原因的专属触发"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我卡在这个课题上两个月了，试了好多方向都不行，帮我找找还有没有别的问法",
+      "expected_behavior": "不应激活 asking-the-right-questions，应激活 questions-are-the-answer（问题重构 / 问题风暴）",
+      "notes": "跨书混淆诱饵（硬性要求）：这是生成／重构问题（发散），不是检验论证（收敛）"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我朋友跟我诉苦，我只说了两句就开始给建议，事后觉得不对，下次该怎么聊？",
+      "expected_behavior": "不应激活 asking-the-right-questions，应激活 coaching-habit（AWE 追问 / 建议怪兽拦截）",
+      "notes": "跨书混淆诱饵：这是对话中的提问，不是对论证的检验"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "昨天那场球赛最终比分是多少？",
+      "expected_behavior": "不应激活 asking-the-right-questions，直接查证回答",
+      "notes": "边界诱饵：纯事实查询不是论证评估"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "ChatGPT 跟我说「研究表明这个投资方案风险很低」，我该怎么判断？",
+      "expected_behavior": "可以激活 asking-the-right-questions，但必须先指出本册的时代缺口：无来源的 AI 生成文本没有可追溯的论证，清单第 1 步就做不下去；正确做法是先要求溯源，溯源失败则明确告知无法用本清单评估",
+      "notes": "边界：2026 年最高频的现实场景，恰恰是本书（首版 1978）最大的盲区"
+    },
+    {
+      "id": "edge-02",
+      "type": "edge_case",
+      "prompt": "医院给我的体检报告上有个指标异常，医生建议做进一步检查，我该不该信这个建议？",
+      "expected_behavior": "不应主要依赖 asking-the-right-questions，应明确说明外行按清单判断专业医疗问题往往比直接信任领域共识更差，本册只作第一道粗筛，建议寻求第二位专业医师意见",
+      "notes": "边界：本册明确的专业领域局限 —— 清单能识别话术，不能替代专业训练"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "should_not_trigger 容错为 0；其中 should-not-trigger-01/02 为跨书混淆测试。edge-01/02 检验的是能力卡 B 段中记录的时代局限与作者盲点是否被正确传达。"
+}
