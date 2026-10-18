@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>思考的框架 · 知识库与学习计划</title>
+<style>
+:root{
+  --bg:#F7F6F3; --surface:#FFFFFF; --line:#E2E0D8; --line2:#D3D1C7;
+  --tx:#2C2C2A; --tx2:#5F5E5A; --tx3:#888780;
+  --g0:#534AB7; --gA:#185FA5; --gB:#0F6E56; --gC:#BA7517; --gD:#D85A30; --gE:#639922; --gF:#D4537E;
+  --g0bg:#EEEDFE; --gAbg:#E6F1FB; --gBbg:#E1F5EE; --gCbg:#FAEEDA; --gDbg:#FAECE7; --gEbg:#EAF3DE; --gFbg:#FBEAF0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:14px;line-height:1.65;padding:0 0 60px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header{background:var(--surface);border-bottom:1px solid var(--line);padding:32px 0 24px;margin-bottom:24px}
+h1{font-size:22px;font-weight:500;letter-spacing:-0.2px}
+.sub{color:var(--tx2);font-size:13px;margin-top:6px}
+.stats{display:flex;gap:28px;margin-top:18px;flex-wrap:wrap}
+.stat b{font-size:19px;font-weight:500;display:block}
+.stat span{color:var(--tx3);font-size:12px}
+nav{display:flex;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:4px;margin-bottom:24px}
+nav button{flex:1;background:none;border:none;padding:9px 4px;border-radius:7px;cursor:pointer;font-size:13px;color:var(--tx2);font-family:inherit}
+nav button.on{background:var(--bg);color:var(--tx);font-weight:500}
+.pane{display:none}
+.pane.on{display:block}
+h2{font-size:16px;font-weight:500;margin:32px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+h2:first-child{margin-top:0}
+.note{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--g0);border-radius:8px;padding:14px 16px;font-size:13px;color:var(--tx2);margin-bottom:20px}
+.note b{color:var(--tx);font-weight:500}
+
+.grp{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.ghead{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;cursor:pointer}
+.gbar{width:4px;align-self:stretch;border-radius:2px;flex:none}
+.gname{font-size:14px;font-weight:500;flex:none;width:150px}
+.gdesc{font-size:12.5px;color:var(--tx2);flex:1;line-height:1.55}
+.gcount{font-size:12px;color:var(--tx3);flex:none}
+.chips{display:flex;flex-wrap:wrap;gap:7px;padding:0 18px 16px 36px}
+.chip{border:1px solid var(--line2);border-radius:7px;padding:6px 11px;font-size:12.5px;cursor:pointer;background:var(--bg);transition:.12s}
+.chip:hover{transform:translateY(-1px)}
+.chip.sel{outline:2px solid var(--tx3)}
+.chip b{font-weight:500;display:block}
+.chip i{font-style:normal;color:var(--tx3);font-size:11px}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-top:14px}
+.card.hide{display:none}
+.ctop{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.ctitle{font-size:16px;font-weight:500}
+.cen{color:var(--tx3);font-size:12px;font-family:ui-monospace,Menlo,Consolas,monospace}
+.ctag{font-size:11px;padding:2px 8px;border-radius:5px;margin-left:auto}
+.row{display:flex;gap:10px;padding:7px 0;border-top:1px solid var(--line);font-size:13px}
+.row:first-of-type{border-top:none}
+.rk{flex:none;width:76px;color:var(--tx3);font-size:12px;padding-top:1px}
+.rv{flex:1;color:var(--tx2)}
+.rv b{color:var(--tx);font-weight:500}
+
+table{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:13px}
+th{background:var(--bg);text-align:left;padding:10px 14px;font-weight:500;font-size:12.5px;color:var(--tx2);border-bottom:1px solid var(--line)}
+td{padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--tx2)}
+tr:last-child td{border-bottom:none}
+td b{color:var(--tx);font-weight:500}
+td code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;background:var(--bg);padding:1px 5px;border-radius:4px;color:var(--tx)}
+
+.wk{display:flex;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:8px}
+.wno{flex:none;width:46px;height:46px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:500;color:#fff}
+.wbody{flex:1}
+.wttl{font-size:13.5px;font-weight:500;margin-bottom:4px}
+.wmods{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.wm{font-size:11.5px;padding:3px 9px;border-radius:5px;border:1px solid var(--line2);background:var(--bg);cursor:pointer}
+.wm:hover{border-color:var(--tx3)}
+.wnote{font-size:12px;color:var(--tx3);margin-top:7px}
+
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-bottom:18px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.sno{font-size:11px;color:var(--tx3);letter-spacing:.5px}
+.stt{font-size:13.5px;font-weight:500;margin:3px 0 5px}
+.sds{font-size:12.5px;color:var(--tx2)}
+.smin{font-size:11px;color:var(--gC);margin-top:6px}
+
+.lv{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.lvi{flex:1;min-width:200px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:13px 15px}
+.lvt{font-size:13px;font-weight:500;margin-bottom:4px}
+.lvd{font-size:12.5px;color:var(--tx2)}
+.lvk{font-size:11.5px;color:var(--tx3);margin-top:6px}
+
+.ck{display:flex;align-items:flex-start;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:12px 15px;margin-bottom:7px;cursor:pointer;font-size:13px}
+.ck:hover{border-color:var(--line2)}
+.ck input{margin-top:4px;accent-color:var(--g0);cursor:pointer;flex:none}
+.ck span{color:var(--tx2)}
+.ck.done span{text-decoration:line-through;color:var(--tx3)}
+.cklab{font-size:12px;color:var(--tx3);margin:18px 0 8px}
+footer{text-align:center;color:var(--tx3);font-size:12px;margin-top:40px;padding-top:20px;border-top:1px solid var(--line)}
+@media(max-width:720px){.gname{width:auto}.gdesc{display:none}.stats{gap:18px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>思考的框架 · 知识库</h1>
+<div class="sub">沙恩·帕里什《思考的框架》第 1 册 + 第 2 册 ｜ 34 个思维模型蒸馏 ｜ 按「你在做什么」重排的骨架</div>
+<div class="stats">
+<div class="stat"><b>34</b><span>思维模型</span></div>
+<div class="stat"><b>7</b><span>能力模块</span></div>
+<div class="stat"><b>10</b><span>周掌握周期</span></div>
+<div class="stat"><b>25 min</b><span>每日投入</span></div>
+</div>
+</div></header>
+
+<div class="wrap">
+<nav>
+<button class="on" data-p="p1">知识骨架</button>
+<button data-p="p2">学习计划</button>
+<button data-p="p3">易混辨析</button>
+</nav>
+
+<!-- ============ P1 骨架 ============ -->
+<div class="pane on" id="p1">
+<div class="note"><b>骨架怎么读：</b>书的原目录按学科分（通用 / 物理 / 化学 / 生物）。这里按<b>你在解决什么问题</b>重排——从「校准自己」到「看清结构」到「推演决策」再到「驱动变化」，是一条完整的动手链条。点任意模型看它的规则与触发条件。</div>
+
+<h2>骨架全景</h2>
+<div id="skeleton"></div>
+
+<h2>模型明细</h2>
+<div class="note" style="border-left-color:var(--tx3)">点上方任意模型，明细显示在这里。每张卡在原书中都有完整的六段内容（原文 / 自述 / 案例 / 触发 / 步骤 / 边界），可让已安装的 Skill 展开。</div>
+<div id="detail"></div>
+</div>
+
+<!-- ============ P2 计划 ============ -->
+<div class="pane" id="p2">
+<div class="note"><b>计划依据：</b>下面每条安排都对应一条有实证支持的学习规律，不是拍脑袋排的。检索练习、间隔重复、交错练习、变式练习四项对长期保持的效果证据最强，本计划把它们做成固定动作。</div>
+
+<h2>一、每天的 25 分钟（固定 SOP）</h2>
+<div class="steps">
+<div class="step"><div class="sno">STEP 1</div><div class="stt">检索</div><div class="sds">闭卷默写昨天那个模型的六段骨架，写完再对照卡片补缺口。做不出来才是有效的信号。</div><div class="smin">3 分钟</div></div>
+<div class="step"><div class="sno">STEP 2</div><div class="stt">新学</div><div class="sds">读 1 张能力卡，重点是 E 段（执行步骤）和 B 段（边界），R 段原文只扫一眼。</div><div class="smin">10 分钟</div></div>
+<div class="step"><div class="sno">STEP 3</div><div class="stt">变式</div><div class="sds">把该模型套进 3 个不同场景（学业 / 人际 / 决策），各写一句结论。同一模型换场景用，才可能迁移。</div><div class="smin">7 分钟</div></div>
+<div class="step"><div class="sno">STEP 4</div><div class="stt">交错</div><div class="sds">从已学模型里随机抽 2 个，和今天的新模型做「这时该用哪个」的辨析。</div><div class="smin">5 分钟</div></div>
+</div>
+
+<h2>二、每周末的 40 分钟</h2>
+<table>
+<tr><th style="width:130px">动作</th><th>做什么</th></tr>
+<tr><td><b>间隔复习</b></td><td>把本周到期（+1 天 / +3 天 / +7 天）的模型各做一次闭卷检索，只对答错的补读</td></tr>
+<tr><td><b>综合演练</b></td><td>拿 1 个你本周真实遇到的问题，判断该用哪两个模型，写出分析过程和结论</td></tr>
+<tr><td><b>更新触发清单</b></td><td>把你实际遇到、但当时没想起来的场景补进该模型的触发条件里</td></tr>
+</table>
+
+<h2>三、10 周进度表</h2>
+<div id="weeks"></div>
+
+<h2>四、间隔重复节奏</h2>
+<div class="note" style="border-left-color:var(--gB)">每个模型学完当天记一次，之后按 <b>+1 天 → +3 天 → +7 天 → +14 天 → +30 天</b> 复习，之后每月一次。答对的推到下一档，答错的退回上一档。遗忘在临界点被打断才是最省力的。</div>
+
+<h2>五、掌握度自检（三级）</h2>
+<div class="lv">
+<div class="lvi"><div class="lvt">L1 · 认得出</div><div class="lvd">看到一个场景，能说出该用哪个模型</div><div class="lvk">判据：10 个场景题能对 8 个</div></div>
+<div class="lvi"><div class="lvt">L2 · 用得出</div><div class="lvd">能按 E 段步骤跑完，产出可验证的结论</div><div class="lvk">判据：真实问题上用过 ≥3 次</div></div>
+<div class="lvi"><div class="lvt">L3 · 分得清</div><div class="lvd">能说出它和近邻模型的区别与不使用边界</div><div class="lvk">判据：能答对易混辨析里的对比题</div></div>
+</div>
+
+<h2>六、实际行动清单</h2>
+<div class="cklab">开工前（第 0 周，做一次）</div>
+<div id="ck0"></div>
+<div class="cklab">每天（25 分钟）</div>
+<div id="ckd"></div>
+<div class="cklab">每周末（40 分钟）</div>
+<div id="ckw"></div>
+<div class="cklab">里程碑（第 10 周）</div>
+<div id="ckm"></div>
+</div>
+
+<!-- ============ P3 辨析 ============ -->
+<div class="pane" id="p3">
+<div class="note"><b>为什么这张表最重要：</b>34 个模型里真正容易被用混的，是那些「长得很像、处方相反」的对子。分不清它们，学得再多也是乱调用。这张表是 L3 掌握度的核心考点。</div>
+<h2>易混模型对照（29 组）</h2>
+<table>
+<thead><tr><th style="width:210px">这一对</th><th>怎么分</th><th style="width:180px">一句话判据</th></tr></thead>
+<tbody id="confuse"></tbody>
+</table>
+</div>
+</div>
+
+<footer>由《思考的框架》蒸馏产物生成 · 完整原文、案例与执行步骤见已安装的 Skill</footer>
+
+<script>
+(function(){
+ function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
+ function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+ window.__lsGet=lsGet; window.__lsSet=lsSet;
+ document.querySelectorAll('nav button').forEach(function(b){
+  b.addEventListener('click',function(){
+   document.querySelectorAll('nav button').forEach(function(x){x.classList.remove('on')});
+   document.querySelectorAll('.pane').forEach(function(x){x.classList.remove('on')});
+   b.classList.add('on');
+   var p=document.getElementById(b.dataset.p);
+   if(p)p.classList.add('on');
+   try{window.scrollTo({top:0,behavior:'smooth'})}catch(e){}
+  });
+ });
+})();
+const GROUPS=[
+ {id:'L0',n:'地基',d:'所有模型的前置：你手上的任何描述都只是地图，不是现实本身。这一条没立住，后面 33 个都会用歪。',c:'--g0',b:'--g0bg'},
+ {id:'A',n:'校准自身',d:'在判断世界之前，先判断「我这个判断者」：我有没有资格、我的视角盲区在哪、我的说法能不能被推翻。',c:'--gA',b:'--gAbg'},
+ {id:'B',n:'拆解结构',d:'把一个模糊的东西拆成可检验的部件：真约束在哪、条件够不够、谁和谁因果、系统怎么搭的。',c:'--gB',b:'--gBbg'},
+ {id:'C',n:'推演决策',d:'决策核心三件套：这个行动之后会发生什么、有多大概率、最坏怎么死。高频、通用、上手立刻有反馈。',c:'--gC',b:'--gCbg'},
+ {id:'D',n:'驱动变化',d:'知道该做什么之后，为什么还是推不动？这一组给出「推不动」的四种不同诊断和各自不同的处方。',c:'--gD',b:'--gDbg'},
+ {id:'E',n:'演化博弈',d:'把时间轴拉长：你现在赖以生存的东西几年后还值钱吗？对手在动，你站着不动就是倒退。',c:'--gE',b:'--gEbg'},
+ {id:'F',n:'人际动力',d:'前面六组都在处理「事」，这一组处理「人」：他为什么这么动、我手里有什么牌、我该怎么给。',c:'--gF',b:'--gFbg'}
+];
+
+const M=[
+['map-not-territory','地图不等于疆域本身','The Map Is Not the Territory','L0','现实是终极更新——任何模型/报表/简历都只是地图，用它之前先问它丢弃了什么，并至少做一次不经过它的一手核验','这份数据能信吗 / 指标很好但感觉不对 / 这个模型还适用吗'],
+['circle-of-competence','能力圈','Circle of Competence','A','圈的大小不重要，重要的是知道边界在哪——圈外不是必败，是优势转移到了别人手上','这事我该不该接 / 我够格吗 / 我们在这上面有优势吗'],
+['relativity','相对性','Relativity','A','你看到的世界取决于你的参考系——承认盲区并叠加异质视角；但视角不同不等于所有视角同等正确','为什么两人描述相反 / 谁的证词可信 / 他为什么不可理喻'],
+['falsifiability','可证伪性','Falsifiability','A','说不出「什么观察会推翻我」的说法，不是更可靠，而是根本没上过考场——把主张改写成可检验形式并预先写死证伪条件','这个说法是真命题吗 / 怎么判断它是伪科学'],
+['first-principles','第一性原理','First Principles','B','除了自然法则，一切都是共同信仰——把「确知为真」从"只是假设"里剥出来，再带着硬约束重建方案','为什么一定要这样 / 成本能不能压下来 / 有没有别的做法'],
+['thought-experiment','思想实验','Thought Experiments','B','在「心智实验室」里推演无法直接实验的情境——先做基础研究划出已知边界，再变异变量，最后必须保留被证伪的可能','如果……会怎样 / 这个假说自洽吗 / 没法做实验怎么验证'],
+['necessity-sufficiency','必要性和充分性','Necessity and Sufficiency','B','必要条件集合是充分条件集合的子集——两者之间那道鸿沟由运气与偶然构成，再多的必要条件也填不满','这套成功配方够了吗 / 有了它就一定成吗'],
+['correlation-causation','因果关系与相关关系','Correlation vs Causation','B','相关不证明因果——先量化相关系数，把因果方向倒过来念一遍，再问「这些样本本来是不是极端值」（均值回归）','这是因果还是巧合 / 业绩好转是我的功劳吗 / 怎么设对照组'],
+['occams-razor','奥卡姆剃刀','Occam\'s Razor','B','解释力相当时，选假设最少的那个——每多一个变量就多一次出错机会；但简单不能自证，且世界有时就是复杂的','哪套解释更可信 / 我是不是想复杂了 / 出现什么证据就该换答案'],
+['hierarchical-organization','等级组织','Hierarchical Organization','B','等级无法废除只能善加利用——同时画出正式等级与影子等级，检查信息是否被过滤，最容易的领导方式是服务','组织里谁真说了算 / 扁平团队为什么更焦虑 / 危机中怎么给方向'],
+['ecosystems','生态系统','Ecosystems','B','先画成分与依赖图，找出「谁走了系统会瘫痪」和限制你的最稀缺资源；封闭一段它只会换个方式自组织','谁走了系统会瘫 / 真正的瓶颈资源是什么 / 干预会不会反弹'],
+['thermodynamics','热力学','Thermodynamics','B','秩序是偶然、混乱是常态——想维持差异就得算清绝缘体的持续成本；但完全均衡等于死寂，温差是必要的','该融合还是隔离 / 部门墙的成本 / 系统失序点在哪'],
+['second-order-thinking','二阶思维','Second-Order Thinking','C','然后呢？——把一阶、二阶、三阶后果分栏写满，圈出不可逆项，并注意「一阶为负、二阶为正」往往是竞争者更少的机会','之后会怎样 / 长期有什么影响 / 会不会有副作用'],
+['probabilistic-thinking','概率思维','Probabilistic Thinking','C','不追求确定答案，先找基准率、给出粗糙但明确的赔率，判断薄尾还是肥尾——肥尾域不做点预测，改为调仓位确保输得起','有多大概率 / 该投多少 / 值得赌一把吗'],
+['inversion','逆向思维','Inversion','C','避免愚蠢比追求智慧容易得多——把「怎样做到 X」翻成"怎样保证一定得不到 X"，然后既加驱动力、更削减制约力','怎么做一定会失败 / 有什么坑要避 / 帮我做个 pre-mortem'],
+['inertia','惯性','Inertia','D','惯性解释的是阻力大小不是方向对错——先估算「质量」（存在多久、嵌入多深），再把 60–70% 的资源前置到启动','明知道该改为什么改不动 / 启动要多大推力'],
+['friction-viscosity','摩擦力和黏度','Friction and Viscosity','D','先减阻再加力——列出阻力清单并标注层级与尺度，优先把处置权交给最接近问题的人；摩擦也可主动制造或当武器','为什么这么卡 / 该加人还是改流程'],
+['velocity','速度（不是速率）','Velocity','D','速率确保运动，速度产生结果——先定义位移，砍掉不产生位移的忙碌，并注意规模越大越难调头','很忙但没进展 / 该提速还是先减重'],
+['least-effort','最小化能量输出','Tendency to Minimize Energy Output','D','最省力法则同时适用于体力与认知——有效的设计必须顺应而不是对抗它：把正确行为的能量成本降到最低','为什么大家抄近道 / 怎么让正确行为更省力'],
+['activation-energy','活化能','Activation Energy','D','真正的变革要投入「形成新键」的能量而不只是"打破旧键"——定义终点态、准备引火物、多点点火，量不够就加码而不是延长等待','变革为什么推到一半熄火 / 这场变革真正要投多少'],
+['catalysts','催化剂','Catalysts','D','催化剂只加速本来就能发生的反应——先确认趋势已存在，再选技术/人/制度做小剂量测试；方向错了加催化剂会加速灾难','该自己加码还是找杠杆点 / 上系统能起死回生吗'],
+['alloying','合金化','Alloying','D','找互补者而不是相似者——异质成分按恰当比例结合能产生涌现性质；比例太少无效、太多变脆，且人的合金会碎','该找什么样的合伙人 / 该补什么能力而不是加强什么'],
+['natural-selection','自然选择与灭绝','Natural Selection','E','适应只在此时此地有效——列出当前被奖励的性状并判断其环境稳定性，找出跌破即不可逆的「种群密度」临界点','这项能力几年后还值钱吗 / 生存基础正在失效吗'],
+['red-queen','红皇后效应','Red Queen Effect','E','决定胜负的不是存量实力而是适应率——比较你与对手的适应速度，并优先盘点现有能力的新用途（外适应）','领先者为什么被追上 / 我们是不是在原地跑'],
+['niches','生态位','Niches','E','先判断自己是广适还是特化——特化要满足「小到没人愿意抢、大到能养活你」；与强势者完全重叠就必须做资源分割','做通才还是专才 / 我和别人生态位重叠吗'],
+['competition','竞争','Competition','E','明确争夺的到底是什么资源——与谁生态位完全重叠就必须资源分割；那一点「有意义的优势」会被放大成淘汰性优势','这个赛道还能进吗 / 硬拼还是换生态位'],
+['replication','复制','Replication','E','成功的复制内置一点灵活性——内核（≤3 条）绝不能变、包装必须因地制宜，并写清 what/why 而不是只给 how','打法复制到新团队为什么走样 / 哪些绝不能改'],
+['reciprocity','互惠互利','Reciprocity','F','你希望世界变成什么样就先做到什么样——先手给出、用最小的力、按总账而非单次结算；一次性博弈不适用','该不该先付出 / 被背叛了该报复还是再给机会'],
+['incentives','激励','Incentives','F','永远不要在应该思考激励的时候去想别的事——对每个行为问「谁因此得到了什么」，并找出谁没有动机去找反面证据','为什么说了没人动 / 他为什么这么积极 / 怎么让他们主动做'],
+['self-preservation','自我保护','Self-Preservation','F','先识别是战、逃还是冻（冻最需要外部打断），再找出对方真正要保护的是命、地位还是意义——这是激励他人的入口','他为什么囤积信息抗拒变化 / 他真正要保护什么'],
+['cooperation','合作 / 共生','Cooperation','F','合作是各补缺口而不是单方索取——列缺口清单 × 可供给清单找交集，并定期复核关系有没有滑向寄生','该跟谁结盟 / 这段关系是不是变成寄生了'],
+['leverage','杠杆 / 筹码','Leverage','F','筹码的价值在对方眼里而不在你手里——清点、验证对方感知、校准压力、守住退出权；最好的杠杆是不需要这笔交易','谈判前我有什么牌 / 压力该加多大 / 用了会不会反噬'],
+['hanlons-razor','汉隆剃刀','Hanlon\'s Razor','F','能解释为愚蠢的就不要解释为恶意——取含主观意图最少、且仍能解释全部事实的那条作默认解释；但恶意一旦被证实就毫不留情','他是不是故意的 / 这是在针对我吗'],
+['dunbars-number','邓巴数字','Dunbar\'s Number','F','稳定社会关系的上限约 150——超过后必须靠共同信念、规则与中间层替代人际熟悉；社交精力按 5/15/50/150 分层投入','团队多大该换协作机制 / 社交精力怎么分层']
+];
+
+const WEEKS=[
+['W0','启动：立地基 + 摸底',['map-not-territory'],'先做一次基线自测：拿 10 个真实场景凭直觉作答，记录答错的和想不起来的。这份错题本是你后面 10 周的靶子。'],
+['W1','校准自身',['circle-of-competence','relativity','falsifiability'],'这一组是「反身」的：它不告诉你世界怎样，只告诉你你的判断哪里会出毛病。先学它，后面的模型才不会用歪。'],
+['W2','决策核心三件套',['second-order-thinking','probabilistic-thinking','inversion'],'全书使用频率最高的一组，且立刻能用在真实决策上。安排在早期，是因为早期最需要即时反馈来维持动力。'],
+['W3','拆解结构 A',['first-principles','thought-experiment','occams-razor'],'三个「破除既有框架」的工具。注意 weekly 交错：本周每天要和 W1/W2 的模型做辨析，别连着三天只练一个。'],
+['W4','拆解结构 B',['necessity-sufficiency','correlation-causation','ecosystems','hierarchical-organization'],'四个「看清系统真实结构」的工具。到这里开始有明显的认知负荷，每天 25 分钟别加量。'],
+['W5','驱动变化 A',['inertia','friction-viscosity','velocity','least-effort'],'关键难点：这四个都回答「为什么推不动」，但处方完全不同。本周的重点不是记住定义，是练会区分。'],
+['W6','驱动变化 B',['activation-energy','catalysts','alloying','thermodynamics'],'与 W5 合起来构成完整的「推动变化」工具箱。周末演练建议拿一个你真实想推动但一直没推动的事做全流程。'],
+['W7','演化博弈（上）',['natural-selection','red-queen','niches','competition'],'把时间轴拉长到几年。这四个互相咬得很紧，务必用易混辨析表过一遍。'],
+['W8','演化博弈（下）+ 人际开局',['replication','incentives','reciprocity','hanlons-razor'],'跨模块的一周，故意这样排：交错练习在模块之间发生时效果最好。'],
+['W9','人际动力收尾',['self-preservation','cooperation','leverage','dunbars-number'],'最后四个都在处理「人」。学到这里，34 个模型全部过完第一轮。'],
+['W10','综合演练 + 输出',[],'不再学新模型。做三件事：① 拿 5 个真实问题各用 2 个模型完整分析；② 挑 3 个你最弱的模型做费曼输出（讲给别人听或写成短文）；③ 重做 W0 的基线自测，对比错题本。']
+];
+
+const CONFUSE=[
+['地图≠疆域 ↔ 能力圈','前者问「我手上这份描述有多可信」，后者问「我本人有没有资格判断」','对象不同：描述 vs 自己'],
+['地图≠疆域 ↔ 可证伪性','前者校验「描述与现实的差距」，后者校验「命题有没有被推翻的可能」','差距 vs 可推翻'],
+['地图≠疆域 ↔ 相对性','前者是「描述与实地对不上」，后者是「不同人看到的同一件事不同」','描述 vs 视角'],
+['第一性原理 ↔ 思想实验','前者向下拆解约束以重建方案（产出可量化下限），后者构造假想情境做推演（产出假说）','拆约束 vs 造情境'],
+['二阶思维 ↔ 思想实验','前者看自己行动引发的后果链，后者看假想情境中的结果','行动之后 vs 假想之中'],
+['二阶思维 ↔ 逆向思维','二阶从行动往前推后果（加法、预见连锁），逆向从目标往回找失败条件（减法、避免愚蠢）','往前推 vs 往回找'],
+['二阶思维 ↔ 概率思维','二阶给「之后会发生什么」，概率给「有多大把握、该投多少」','后果链 vs 可能性'],
+['概率思维 ↔ 逆向思维','概率定仓位与下注规模，逆向列红线与失败清单','投多少 vs 别踩什么'],
+['奥卡姆剃刀 ↔ 汉隆剃刀','都选最简单的解释：奥卡姆选变量最少的，汉隆选主观意图最少的','变量最少 vs 恶意最少'],
+['汉隆剃刀 ↔ 激励','汉隆处理「是不是恶意」，激励处理「谁因此得到什么」。同一行为反复出现时，从汉隆升级到激励','一次性 vs 反复出现'],
+['激励 ↔ 自我保护','激励问「他因什么而动」（利益），自保问「他在防御什么」（恐惧/面子/意义）','趋利 vs 避害'],
+['可证伪性 ↔ 因果相关','前者检验一个命题能否被推翻，后者检验两个变量是否因果','命题 vs 两变量'],
+['必要性充分性 ↔ 因果相关','前者问「凑齐条件就够了吗」（配方完整性），后者问「两件事共变是不是因果」','配方够不够 vs 共变是不是因果'],
+['惯性 ↔ 摩擦力 ↔ 活化能','三者都回答「为什么推不动」：惯性估质量并把力气前置到启动；摩擦力列阻力清单做减法；活化能强调投入足够能量抵达终点','启动难 / 卡住了 / 半途熄火'],
+['惯性 ↔ 速度','惯性管启动与停止的阻力大小，速度管方向对不对（速率≠速度，要有位移）','推得动吗 vs 方向对吗'],
+['最小能量 ↔ 惯性 ↔ 摩擦力','最小能量解释「为什么没人做」（人的默认倾向），惯性解释「为什么推不动」（对象阻力），摩擦力解释「卡在哪一环」（环境阻力）','没人做 / 推不动 / 卡哪环'],
+['活化能 ↔ 催化剂','活化能是「该投入多少能量」，催化剂是「能不能换个低能垒路径」（只加速本就能发生的反应）','加能量 vs 换路径'],
+['摩擦力 ↔ 最小能量','摩擦力要削减阻力让事情能推，最小能量要顺应阻力让正确行为更省力','削减 vs 顺应'],
+['相对性 ↔ 互惠互利','相对性解释「为什么大家看到的不一样」，互惠处理「我给出什么就回收什么」','认知差异 vs 行为对等'],
+['互惠互利 ↔ 杠杆','互惠是长期博弈（你给出什么就回收什么），杠杆是当下博弈（你手里有什么牌）——关系结束，杠杆就没了','长期 vs 当下'],
+['互惠互利 ↔ 合作共生','互惠是行为对等（你对我好我对你好），共生是结构互补（各补缺口产生新功能）','对等 vs 互补'],
+['杠杆 ↔ 激励','杠杆问「我手里有什么牌」，激励问「对方因什么而动」','我的牌 vs 他的动机'],
+['自然选择 ↔ 红皇后','自然选择看「环境筛掉了什么」（绝对适应），红皇后看「对手进化得多快」（相对适应率）','环境筛 vs 对手跑'],
+['生态系统 ↔ 生态位','生态系统看整个系统的成分与依赖，生态位看某一个体在系统里的位置（通才 vs 专才）','整个系统 vs 我的位置'],
+['生态位 ↔ 竞争 ↔ 红皇后','生态位＝我该占哪个位置；竞争＝谁在挤我、要不要资源分割；红皇后＝大家都在跑，我的适应率够不够','占位 / 被挤 / 跑速'],
+['复制 ↔ 合金化','复制是「把既有打法扩到新地点」，合金化是「组合不同成分产生新性质」','扩地点 vs 换成分'],
+['等级组织 ↔ 生态系统','等级看权力与信息流向（正式等级 + 影子等级），生态系统看依赖与关键物种','权力流 vs 依赖网'],
+['合作 ↔ 邓巴数','合作给关系质量判据（互利 vs 寄生），邓巴数给规模上限与协作机制切换点（150 是分界）','关系好坏 vs 规模上限'],
+['热力学 ↔ 自然选择','热力学讲「秩序需能量维持、系统趋向均衡」，自然选择讲「环境压力筛出留存的性状」','趋向均衡 vs 择优留存']
+];
+
+const CK={
+ ck0:['通读一遍骨架全景，搞清楚 7 个模块分别在解决什么问题',
+      '做基线自测：拿 10 个真实场景凭直觉作答，建一份错题本',
+      '建一个「思维模型日志」（任意笔记工具，每天 1 条）'],
+ ckd:['25 分钟 SOP：检索 3′ → 新学 10′ → 变式 7′ → 交错 5′',
+      '日志写 1 条：场景 → 用了哪个模型 → 结论 → 事后复盘',
+      '日志里至少 1 条是「我当时没想到用、事后才发现该用」的'],
+ ckw:['把到期（+1/+3/+7 天）的模型各做一次闭卷检索',
+      '拿 1 个本周真实问题做综合演练，判断该用哪两个模型',
+      '把本周漏判的场景补进对应模型的触发条件'],
+ ckm:['拿 5 个真实问题各用 2 个模型完整分析一遍',
+      '挑 3 个最弱的模型做费曼输出：讲给别人听，或写成一篇短文',
+      '重做 W0 的基线自测，和错题本对比']
+};
+
+function gid(g){return GROUPS.find(x=>x.id===g)}
+function gm(g){return M.filter(x=>x[3]===g)}
+
+try{document.getElementById('skeleton').innerHTML=GROUPS.map(g=>{
+ const ms=gm(g.id);
+ return '<div class="grp"><div class="ghead">'+
+  '<div class="gbar" style="background:var('+g.c+')"></div>'+
+  '<div class="gname">'+g.id+' · '+g.n+'</div>'+
+  '<div class="gdesc">'+g.d+'</div>'+
+  '<div class="gcount">'+ms.length+' 个</div></div>'+
+  '<div class="chips">'+ms.map(m=>'<div class="chip" data-id="'+m[0]+'" style="background:var('+g.b+');border-color:var('+g.c+')55"><b>'+m[1]+'</b><i>'+m[2]+'</i></div>').join('')+'</div></div>';
+}).join('')}catch(e){console.warn('skeleton',e)}
+
+function show(id){
+ const m=M.find(x=>x[0]===id); if(!m)return;
+ const g=gid(m[3]);
+ document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('sel',c.dataset.id===id));
+ document.getElementById('detail').innerHTML=
+  '<div class="card"><div class="ctop"><span class="ctitle">'+m[1]+'</span><span class="cen">'+m[2]+'</span>'+
+  '<span class="ctag" style="background:var('+g.b+');color:var('+g.c+')">'+g.id+' · '+g.n+'</span></div>'+
+  '<div class="row"><div class="rk">一句话规则</div><div class="rv"><b>'+m[4]+'</b></div></div>'+
+  '<div class="row"><div class="rk">听到就调</div><div class="rv">'+m[5]+'</div></div>'+
+  '<div class="row"><div class="rk">Skill 名</div><div class="rv"><code>'+m[0]+'</code></div></div></div>';
+ document.getElementById('detail').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+document.getElementById('skeleton').addEventListener('click',e=>{
+ const c=e.target&&e.target.closest?e.target.closest('.chip'):null;
+ if(c){try{show(c.dataset.id)}catch(err){console.warn('show',err)}}
+});
+
+try{document.getElementById('weeks').innerHTML=WEEKS.map((w,i)=>{
+ const col=['--g0','--gA','--gC','--gB','--gB','--gD','--gD','--gE','--gE','--gF','--tx2'][i];
+ return '<div class="wk"><div class="wno" style="background:var('+col+')">'+w[0].slice(1)+'</div><div class="wbody">'+
+  '<div class="wttl">'+w[0]+' · '+w[1]+'</div>'+
+  (w[2].length?'<div class="wmods">'+w[2].map(id=>{const m=M.find(x=>x[0]===id);return '<span class="wm" data-id="'+id+'">'+m[1]+'</span>'}).join('')+'</div>':'')+
+  '<div class="wnote">'+w[3]+'</div></div></div>';
+}).join('')}catch(e){console.warn('weeks',e)}
+document.getElementById('weeks').addEventListener('click',e=>{
+ const s=e.target&&e.target.closest?e.target.closest('.wm'):null; if(!s)return;
+ var nb=document.querySelector('nav button[data-p="p1"]'); if(nb)nb.click();
+ setTimeout(()=>{try{show(s.dataset.id)}catch(e){}},60);
+});
+
+try{
+document.getElementById('confuse').innerHTML=CONFUSE.map(c=>
+ '<tr><td><b>'+c[0].split('↔')[0].trim()+'</b><br><span style="color:var(--tx3);font-size:12px">vs</span> <b>'+c[0].split('↔')[1].trim()+'</b></td><td>'+c[1]+'</td><td>'+c[2]+'</td></tr>'
+).join('');
+}catch(e){console.warn('confuse',e)}
+
+['ck0','ckd','ckw','ckm'].forEach(function(k){
+ try{
+  document.getElementById(k).innerHTML=CK[k].map(function(t,i){
+   var key=k+'-'+i, done=window.__lsGet(key)==='1';
+   return '<label class="ck'+(done?' done':'')+'"><input type="checkbox" data-k="'+key+'"'+(done?' checked':'')+'><span>'+t+'</span></label>';
+  }).join('');
+ }catch(e){console.warn(k,e)}
+});
+
+document.addEventListener('change',function(e){
+ if(!e.target||!e.target.matches||!e.target.matches('.ck input'))return;
+ var k=e.target.dataset.k;
+ window.__lsSet(k,e.target.checked?'1':'0');
+ var box=e.target.closest('.ck');
+ if(box)box.classList.toggle('done',e.target.checked);
+});
+
+try{show('map-not-territory')}catch(e){console.warn('init',e)}
+</script>
+</body>
+</html>
