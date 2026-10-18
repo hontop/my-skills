@@ -1,0 +1,73 @@
+{
+  "generated_by": "cangjie-tools v2.5.0",
+  "bundle_id": "bundle.covey-habits",
+  "router_entrypoint": "covey-habits",
+  "entrypoint_count": 8,
+  "capability_count": 16,
+  "destinations": {
+    "cap.covey.circle-of-influence": {
+      "promoted_to": "covey-circle-of-influence",
+      "router_view": "covey-habits/references/capabilities/covey-circle-of-influence.md"
+    },
+    "cap.covey.paradigm-shift": {
+      "promoted_to": "covey-paradigm-shift",
+      "router_view": "covey-habits/references/capabilities/covey-paradigm-shift.md"
+    },
+    "cap.covey.find-your-voice": {
+      "promoted_to": "covey-find-your-voice",
+      "router_view": "covey-habits/references/capabilities/covey-find-your-voice.md"
+    },
+    "cap.covey.empathic-listening": {
+      "promoted_to": "covey-empathic-listening",
+      "router_view": "covey-habits/references/capabilities/covey-empathic-listening.md"
+    },
+    "cap.covey.third-alternative": {
+      "promoted_to": "covey-third-alternative",
+      "router_view": "covey-habits/references/capabilities/covey-third-alternative.md"
+    },
+    "cap.covey.emotional-bank-account": {
+      "promoted_to": "covey-emotional-bank-account",
+      "router_view": "covey-habits/references/capabilities/covey-emotional-bank-account.md"
+    },
+    "cap.covey.weekly-first-things": {
+      "promoted_to": "covey-weekly-first-things",
+      "router_view": "covey-habits/references/capabilities/covey-weekly-first-things.md"
+    },
+    "cap.covey.pc-balance": {
+      "served_by": "covey-habits",
+      "card": "covey-habits/references/capabilities/covey-pc-balance.md"
+    },
+    "cap.covey.response-ability": {
+      "served_by": "covey-habits",
+      "card": "covey-habits/references/capabilities/covey-response-ability.md"
+    },
+    "cap.covey.clock-compass": {
+      "served_by": "covey-habits",
+      "card": "covey-habits/references/capabilities/covey-clock-compass.md"
+    },
+    "cap.covey.win-win-audit": {
+      "served_by": "covey-habits",
+      "card": "covey-habits/references/capabilities/covey-win-win-audit.md"
+    },
+    "cap.covey.get-trap": {
+      "served_by": "covey-habits",
+      "card": "covey-habits/references/capabilities/covey-get-trap.md"
+    },
+    "cap.covey.sharpen-the-saw": {
+      "served_by": "covey-habits",
+      "card": "covey-habits/references/capabilities/covey-sharpen-the-saw.md"
+    },
+    "cap.covey.self-empowerment": {
+      "served_by": "covey-habits",
+      "card": "covey-habits/references/capabilities/covey-self-empowerment.md"
+    },
+    "cap.covey.personal-mission": {
+      "served_by": "covey-habits",
+      "card": "covey-habits/references/capabilities/covey-personal-mission.md"
+    },
+    "cap.covey.say-no": {
+      "served_by": "covey-habits",
+      "card": "covey-habits/references/capabilities/covey-say-no.md"
+    }
+  }
+}
