@@ -1,0 +1,44 @@
+{
+  "name": "awareness-coach",
+  "version": "1.0.0",
+  "description": "Awareness training coach that distills authoritative consciousness theories (MBSR, meta-awareness, attention networks, flow, neuroplasticity) into skill cards, generates 8-week and 21-day training plans, matches similar anonymized cases, and systematically improves self-awareness, focus and flow.",
+  "author": {
+    "name": "hontop",
+    "email": "hontop@example.com"
+  },
+  "agents": ["./agents/awareness-coach.md"],
+  "skills": ["./skills/awareness-training"],
+
+  "expertType": "agent",
+  "agentName": "awareness-coach",
+
+  "displayName": {
+    "en": "Awareness Training Coach",
+    "zh": "意识训练教练"
+  },
+  "profession": {
+    "en": "Consciousness & Attention Training Coach",
+    "zh": "意识与专注力训练教练"
+  },
+  "displayDescription": {
+    "en": "Distills mindfulness and meta-awareness theories into skill cards, generates 8-week and 21-day dual-version training plans, matches similar cases, and improves awareness and focus.",
+    "zh": "蒸馏正念与元意识等理论为技能卡，生成8周与21天双版本计划，匹配相似案例，提升觉察与专注力。"
+  },
+  "avatar": "avatars/expert.png",
+  "categoryId": "09-OperationsHR",
+  "defaultInitPrompt": {
+    "zh": "我最近学习时总走神，想提升专注力，该怎么开始训练？",
+    "en": "I keep getting distracted while studying. How should I start awareness training?"
+  },
+  "plugin": "awareness-coach",
+  "tags": [
+    { "en": "Mindfulness", "zh": "正念觉察" },
+    { "en": "Focus Training", "zh": "专注力训练" },
+    { "en": "Flow Design", "zh": "心流设计" }
+  ],
+  "quickPrompts": [
+    { "en": "I keep getting distracted while studying. How should I start awareness training?", "zh": "我最近学习时总走神，想提升专注力，该怎么开始训练？" },
+    { "en": "Generate a 21-day light training plan for me, 10 minutes a day.", "zh": "给我生成一份21天轻量版训练计划，每天10分钟。" },
+    { "en": "I can never get into the zone when writing my thesis. Find me similar cases for reference.", "zh": "写论文总是进入不了状态，帮我找相似案例参考。" }
+  ]
+}

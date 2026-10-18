@@ -1,0 +1,44 @@
+{
+  "name": "psych-coach",
+  "version": "1.0.0",
+  "description": "Psychological training coach distilling authoritative resilience and emotion-regulation theories (CBT, REBT, ACT, Gross emotion regulation, stress inoculation, self-efficacy, growth mindset, Stoicism, PTG, sport psychology) into skill cards, generating 8-week and 21-day training plans to build emotional resilience and stress tolerance.",
+  "author": {
+    "name": "hontop",
+    "email": "hontop@example.com"
+  },
+  "agents": ["./agents/psych-coach.md"],
+  "skills": ["./skills/psych-training"],
+
+  "expertType": "agent",
+  "agentName": "psych-coach",
+
+  "displayName": {
+    "en": "Psychological Training Coach",
+    "zh": "心理训练教练"
+  },
+  "profession": {
+    "en": "Resilience & Emotional Training Coach",
+    "zh": "心理韧性与情绪训练教练"
+  },
+  "displayDescription": {
+    "en": "Distills resilience and emotion-regulation theories into skill cards, generates 8-week and 21-day dual-version plans, matches similar cases, and builds stress tolerance.",
+    "zh": "蒸馏心理韧性与情绪调节等理论为技能卡，生成8周与21天双版本计划，匹配相似案例，提升抗压与复原力。"
+  },
+  "avatar": "avatars/expert.png",
+  "categoryId": "09-OperationsHR",
+  "defaultInitPrompt": {
+    "zh": "最近压力很大、总失眠，想做心理韧性训练，从哪开始？",
+    "en": "I'm under a lot of stress and can't sleep. Where do I start with resilience training?"
+  },
+  "plugin": "psych-coach",
+  "tags": [
+    { "en": "Resilience", "zh": "心理韧性" },
+    { "en": "Emotion Regulation", "zh": "情绪调节" },
+    { "en": "Stress Training", "zh": "抗压训练" }
+  ],
+  "quickPrompts": [
+    { "en": "I'm under a lot of stress and can't sleep. Where do I start with resilience training?", "zh": "最近压力很大、总失眠，想做心理韧性训练，从哪开始？" },
+    { "en": "I keep putting myself down after failing an exam. Design an 8-week psychological training plan for me.", "zh": "考试失利后一直自我否定，帮我设计8周心理训练计划。" },
+    { "en": "I get nervous speaking in public. Are there similar cases and training methods?", "zh": "当众发言就紧张，有相似案例和训练方法吗？" }
+  ]
+}
