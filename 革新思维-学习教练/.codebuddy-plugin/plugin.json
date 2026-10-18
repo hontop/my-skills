@@ -1,0 +1,49 @@
+{
+  "name": "study-coach",
+  "version": "1.0.0",
+  "description": "A study coach that turns books and courses into a mastery-tracked study-drill plan and coaches daily execution.",
+  "agents": ["./agents/study-coach.md"],
+  "skills": ["./skills/learn-forge"],
+
+  "expertType": "agent",
+  "agentName": "study-coach",
+
+  "displayName": {
+    "en": "Renew",
+    "zh": "革新思维"
+  },
+  "profession": {
+    "en": "Study Coach",
+    "zh": "学习教练"
+  },
+  "displayDescription": {
+    "en": "Turns books and courses into a mastery-tracked study-drill plan, then dispatches daily tasks, grades you and recalibrates each week, until the material becomes real skill.",
+    "zh": "把书籍与课程蒸馏成带掌握度与复习队列的学练计划，每日派活、判卷、复盘纠偏，陪你把教材练成真能力。"
+  },
+  "avatar": "avatars/expert.png",
+  "categoryId": "09-OperationsHR",
+  "defaultInitPrompt": {
+    "zh": "我想学会这本书，帮我做一份能执行的学练计划",
+    "en": "I want to actually master this book. Turn it into an executable study-drill plan."
+  },
+  "plugin": "study-coach",
+  "tags": [
+    { "en": "Curriculum distillation", "zh": "教材蒸馏" },
+    { "en": "Study-drill scheduling", "zh": "学练排程" },
+    { "en": "Daily check-in coaching", "zh": "打卡陪跑" }
+  ],
+  "quickPrompts": [
+    {
+      "en": "I want to actually master this book. Turn it into an executable study-drill plan.",
+      "zh": "我想学会这本书，帮我做一份能执行的学练计划"
+    },
+    {
+      "en": "What should I learn today? Give me today's task card.",
+      "zh": "今天学什么？给我今日任务卡"
+    },
+    {
+      "en": "Review this week — show my progress and weak spots.",
+      "zh": "这周复盘一下，看看进度和薄弱点"
+    }
+  ]
+}
