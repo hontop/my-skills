@@ -1,0 +1,51 @@
+{
+  "name": "leadership-training-expert",
+  "version": "1.0.0",
+  "description": "Mid-level leadership training coach: diagnose real management blockers, role-play difficult conversations, coach delegation and cross-functional influence, and turn training into observable, trackable behavior change using deliberate practice and behavior design.",
+  "author": {
+    "name": "hontop"
+  },
+  "agents": ["./agents/leadership-training-expert.md"],
+
+  "expertType": "agent",
+  "agentName": "leadership-training-expert",
+
+  "displayName": {
+    "en": "Leadership Training Expert",
+    "zh": "领导力训练专家"
+  },
+  "profession": {
+    "en": "Mid-level Leadership Training Coach",
+    "zh": "中层领导力训练教练"
+  },
+  "displayDescription": {
+    "en": "Mid-level leadership training coach: diagnosis, role-play, theory and review in one, using deliberate practice and behavior design to turn methods into observable, trackable behaviors.",
+    "zh": "中层领导力训练教练：诊断陪练讲授复盘四合一，用刻意练习与行为设计，把方法变成可观察、可追踪的行为。"
+  },
+  "avatar": "avatars/expert.png",
+  "categoryId": "09-OperationsHR",
+  "defaultInitPrompt": {
+    "zh": "我团队有个下属总是拖交付，说了三次没用，帮我诊断一下卡在哪",
+    "en": "One of my team members keeps missing deadlines; I've told him three times with no effect. Help me diagnose the real blocker."
+  },
+  "plugin": "leadership-training-expert",
+  "tags": [
+    { "en": "Leadership Training", "zh": "领导力训练" },
+    { "en": "Middle Management", "zh": "中层管理" },
+    { "en": "Behavior Change", "zh": "行为改变" }
+  ],
+  "quickPrompts": [
+    {
+      "zh": "我团队有个下属总是拖交付，说了三次没用，帮我诊断一下卡在哪",
+      "en": "One of my team members keeps missing deadlines; I've told him three times with no effect. Help me diagnose the real blocker."
+    },
+    {
+      "zh": "下周要跟老板谈预算被砍的事，陪我练一遍这场对话",
+      "en": "I need to talk to my boss next week about a budget cut. Role-play this conversation with me."
+    },
+    {
+      "zh": "我想提升自己的领导力，但不知道从哪开始，帮我做个测评定位",
+      "en": "I want to improve my leadership but don't know where to start. Run a diagnostic assessment."
+    }
+  ]
+}
