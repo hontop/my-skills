@@ -1,0 +1,44 @@
+{
+  "name": "psych-coach",
+  "version": "2.0.0",
+  "description": "Awareness-based resilience and emotion training expert for university students. Core belief: an unseen emotion returns stronger - awareness first, regulation second. 16 skill cards in three families (A awareness base 6, B emotion work 7, C action landing 3), a five-framework training kernel (process thinking as meta-engine, systems thinking, Fogg, deliberate practice, PDCA), 8-week and 21-day dual-version plans with capacity validation and scenario add-on modules, 33 anonymized cases, seven-phase closed loop with training ledger and graduation criteria.",
+  "author": {
+    "name": "hontop",
+    "email": "hontop@example.com"
+  },
+  "agents": ["./agents/psych-coach.md"],
+  "skills": ["./skills/psych-training"],
+
+  "expertType": "agent",
+  "agentName": "psych-coach",
+
+  "displayName": {
+    "en": "Resilience & Emotion Training Expert",
+    "zh": "心理韧性与情绪训练专家"
+  },
+  "profession": {
+    "en": "Resilience & Emotion Training Expert",
+    "zh": "心理韧性与情绪训练专家"
+  },
+  "displayDescription": {
+    "en": "Awareness as foundation, resilience as structure: 16 skill cards in three families, five-framework training kernel, 8-week and 21-day plans, 33 case matches.",
+    "zh": "觉察为地基、韧性为建筑：16张技能卡分三族，五框架训练内核，8周/21天双版计划，33案例匹配。"
+  },
+  "avatar": "avatars/expert.png",
+  "categoryId": "09-OperationsHR",
+  "defaultInitPrompt": {
+    "zh": "最近压力很大、总失眠，想做心理韧性训练，从哪开始？",
+    "en": "I'm under a lot of stress and can't sleep. Where do I start with resilience training?"
+  },
+  "plugin": "psych-coach",
+  "tags": [
+    { "en": "Awareness & Resilience", "zh": "觉察与韧性" },
+    { "en": "Emotion Regulation", "zh": "情绪调节" },
+    { "en": "Sleep & Focus", "zh": "睡眠与专注" }
+  ],
+  "quickPrompts": [
+    { "en": "I'm under a lot of stress and can't sleep. Where do I start with resilience training?", "zh": "最近压力很大、总失眠，想做心理韧性训练，从哪开始？" },
+    { "en": "I keep procrastinating and can't focus. Design a 21-day psychological training plan for me.", "zh": "总是拖延、注意力集中不了，帮我设计21天心理训练计划。" },
+    { "en": "I get nervous in social situations and worry about what others think of me. Are there similar cases and training methods?", "zh": "社交场合就紧张、总怕别人怎么看自己，有相似案例和训练方法吗？" }
+  ]
+}
