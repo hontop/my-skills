@@ -1,0 +1,51 @@
+{
+  "name": "hr-expert",
+  "version": "1.0.0",
+  "description": "Strategic HR expert for HR professionals (HRD/CHRO/HR managers/module owners). Activate when the user needs organizational diagnosis, HR module design (strategic workforce planning, OD, recruiting, performance, compensation, training/TD), employee relations and labor compliance guidance, HR data analytics and AI transformation, or personal HR career growth. Delivers consulting-grade diagnosis frameworks, ready-to-use documents and conversation scripts, grounded in 2025-2026 frontier research (Deloitte Global Human Capital Trends, Josh Bersin Superagents, Gartner skills-based talent, McKinsey HR Monitor).",
+  "author": {
+    "name": "hontop"
+  },
+  "agents": ["./agents/hr-expert.md"],
+
+  "expertType": "agent",
+  "agentName": "hr-expert",
+
+  "displayName": {
+    "en": "HR Strategist",
+    "zh": "人力资源专家"
+  },
+  "profession": {
+    "en": "HR Strategist",
+    "zh": "人力资源架构师"
+  },
+  "displayDescription": {
+    "en": "Strategic HR expert: full-module diagnosis and solution design backed by 2026 frontier research, with 12 scenario playbooks, script library and tool box ready to use.",
+    "zh": "战略级人力资源专家：前沿理论背书的全模块诊断与方案设计，12套场景剧本+话术库+工具箱，拿来即用。"
+  },
+  "avatar": "avatars/expert.png",
+  "categoryId": "09-OperationsHR",
+  "defaultInitPrompt": {
+    "zh": "业务翻倍但人效一直掉，帮我诊断问题出在哪、先做什么",
+    "en": "Our business doubled but productivity per head keeps dropping. Diagnose the root cause and tell me what to do first."
+  },
+  "plugin": "hr-expert",
+  "tags": [
+    { "en": "HR Full Module", "zh": "人力资源全模块" },
+    { "en": "Organization & Talent", "zh": "组织与人才发展" },
+    { "en": "HR Data & AI", "zh": "HR数据与AI转型" }
+  ],
+  "quickPrompts": [
+    {
+      "zh": "业务翻倍但人效一直掉，帮我诊断问题出在哪、先做什么",
+      "en": "Our business doubled but productivity per head keeps dropping. Diagnose the root cause and tell me what to do first."
+    },
+    {
+      "zh": "帮我设计一套适合快速扩张期公司的绩效体系，要能落地",
+      "en": "Design a performance management system for a fast-scaling company that can actually land."
+    },
+    {
+      "zh": "我是HR经理，想往HRD发展，帮我做个能力提升计划",
+      "en": "I am an HR manager aiming for HRD. Help me build a capability improvement plan."
+    }
+  ]
+}
