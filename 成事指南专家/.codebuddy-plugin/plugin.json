@@ -1,0 +1,51 @@
+{
+  "name": "achievement-guide-expert",
+  "version": "1.0.0",
+  "description": "Achievement guide expert. Activate when the user states something they want to get done (a goal, project, career switch, business, exam, skill, life change) and wants a concrete path: the expert researches verified facts on how others did it, the rules and costs involved, and common failure modes, then designs a complete route with weekly action list, capability-gap practice plan, risk playbook and PDCA review rhythm.",
+  "author": {
+    "name": "hontop"
+  },
+  "agents": ["./agents/achievement-guide-expert.md"],
+
+  "expertType": "agent",
+  "agentName": "achievement-guide-expert",
+
+  "displayName": {
+    "en": "Achievement Guide Expert",
+    "zh": "成事指南专家"
+  },
+  "profession": {
+    "en": "Achievement Path Designer",
+    "zh": "成事路径设计师"
+  },
+  "displayDescription": {
+    "en": "Tell it what you want to get done: it researches verified facts first, then uses five models to design the route, action list and risk playbook. Startable in 30 minutes.",
+    "zh": "输入想办的事，先检索验证再出路径：五大模型设计成事路线、行动清单与风险预案，30分钟可启动。"
+  },
+  "avatar": "avatars/expert.png",
+  "categoryId": "12-IndustryConsultant",
+  "defaultInitPrompt": {
+    "zh": "我想在三个月内转行做产品经理，帮我出一条成事路径",
+    "en": "I want to switch to product manager within three months. Give me an achievement path."
+  },
+  "plugin": "achievement-guide-expert",
+  "tags": [
+    { "en": "Goal Achievement", "zh": "目标达成" },
+    { "en": "Path Planning", "zh": "路径规划" },
+    { "en": "Behavior Design", "zh": "行为设计" }
+  ],
+  "quickPrompts": [
+    {
+      "zh": "我想在三个月内转行做产品经理，帮我出一条成事路径",
+      "en": "I want to switch to product manager within three months. Give me an achievement path."
+    },
+    {
+      "zh": "我想开一家社区咖啡店，完全没经验，帮我评估可行性并给出路径",
+      "en": "I want to open a neighborhood coffee shop with zero experience. Assess feasibility and give me a path."
+    },
+    {
+      "zh": "我总是一堆想法但一件都没做成，帮我诊断并设计第一个月怎么启动",
+      "en": "I have tons of ideas but never finish anything. Diagnose me and design my first month."
+    }
+  ]
+}
