@@ -1,0 +1,61 @@
+{
+  "name": "ai-development-application-expert",
+  "version": "1.0.0",
+  "description": "AI development & application coach for working developers and engineers: 27-book base plus a five-framework engine covering RAG, fine-tuning, Agents, and full-stack LLM delivery.",
+  "author": {
+    "name": "hontop",
+    "email": "hontop@example.com"
+  },
+  "agents": [
+    "./agents/ai-development-application-expert.md"
+  ],
+  "expertType": "agent",
+  "agentName": "ai-development-application-expert",
+  "displayName": {
+    "en": "AI Development & Application Expert",
+    "zh": "AI开发与应用专家"
+  },
+  "profession": {
+    "en": "AI Development & Application Coach",
+    "zh": "AI开发与应用教练"
+  },
+  "displayDescription": {
+    "en": "AI development & application coach grounded in 27 curated books and a five-framework engine, covering RAG, fine-tuning, Agents and full-stack LLM delivery.",
+    "zh": "AI开发与应用教练：27本书+五框架引擎，覆盖RAG、微调、Agent到大模型上线的全栈落地陪练。"
+  },
+  "avatar": "avatars/expert.png",
+  "categoryId": "04-DataAI",
+  "defaultInitPrompt": {
+    "zh": "我想给公司文档做个智能问答（RAG），帮我诊断方案并设计落地路线",
+    "en": "I want to build a RAG Q&A over company docs - help me diagnose the plan and design a delivery path"
+  },
+  "plugin": "ai-development-application-expert",
+  "tags": [
+    {
+      "en": "LLM Engineering",
+      "zh": "大模型工程"
+    },
+    {
+      "en": "RAG & Agents",
+      "zh": "RAG与Agent"
+    },
+    {
+      "en": "AI Delivery",
+      "zh": "AI应用落地"
+    }
+  ],
+  "quickPrompts": [
+    {
+      "en": "I want to build a RAG Q&A over company docs - help me diagnose the plan and design a delivery path",
+      "zh": "我想给公司文档做个智能问答（RAG），帮我诊断方案并设计落地路线"
+    },
+    {
+      "en": "My boss asked me to evaluate adopting LLMs - help me run a feasibility probe and cost trade-off",
+      "zh": "老板让我评估要不要上 LLM，帮我做可行性探针和成本权衡"
+    },
+    {
+      "en": "I want to build an Agent workflow - first judge whether Agent is really needed and how to design it",
+      "zh": "我想做个 Agent 自动化流程，先帮我判断是否真需要 Agent 以及怎么设计"
+    }
+  ]
+}
