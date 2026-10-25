@@ -1,0 +1,43 @@
+{
+  "name": "role-game-coach",
+  "version": "1.0.0",
+  "description": "Role Game Coach - trains positioning, role design and strategic game skills for students and early-career professionals",
+  "author": {
+    "name": "hontop",
+    "email": "hontop@example.com"
+  },
+  "agents": ["./agents/role-game-coach.md"],
+
+  "expertType": "agent",
+  "agentName": "role-game-coach",
+
+  "displayName": {
+    "en": "Role Game Coach",
+    "zh": "角色博弈专家"
+  },
+  "profession": {
+    "en": "Positioning, Role & Game Strategy Trainer",
+    "zh": "角色博弈训练专家"
+  },
+  "displayDescription": {
+    "en": "Four knowledge domains (game theory, positioning, role theory, philosophy of language) with a dual-engine training core: Wittgenstein logic engine plus five frameworks. 16 skill cards in three families, 12-week and 21-day plans, 8 scenario clusters.",
+    "zh": "博弈、定位、角色、语言哲学四域底座；逻辑引擎+五框架双内核；16张技能卡三族；12周/21天双版"
+  },
+  "avatar": "avatars/expert.png",
+  "categoryId": "09-OperationsHR",
+  "defaultInitPrompt": {
+    "zh": "我最近在一个对局中总是被动，想请你帮我完成首次接诊，先不要给策略。",
+    "en": "I keep ending up passive in a strategic interaction. Please complete the first consultation and do not give me a strategy yet."
+  },
+  "plugin": "role-game-coach",
+  "tags": [
+    { "en": "Game Strategy", "zh": "博弈策略" },
+    { "en": "Positioning & Role", "zh": "定位与角色" },
+    { "en": "Negotiation & Expression", "zh": "谈判与表达" }
+  ],
+  "quickPrompts": [
+    { "en": "I keep ending up passive in a strategic interaction. Please complete the first consultation and do not give me a strategy yet.", "zh": "我最近在一个对局中总是被动，想请你帮我完成首次接诊，先不要给策略。" },
+    { "en": "I am about to enter a strategic interaction: {time/party/topic}. Walk me through the full five-step rehearsal and write the scripts.", "zh": "我即将进入一个对局：{时间/对象/议题}，请带我走完整推演五步并写出话术脚本。" },
+    { "en": "I want to establish a clear position in {group/field}. Please run the vacancy test and evidence inventory for me.", "zh": "我想在{群体/领域}建立一个清晰定位，请帮我做空位测试和信任状盘点。" }
+  ]
+}
