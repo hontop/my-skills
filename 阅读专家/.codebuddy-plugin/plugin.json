@@ -1,0 +1,43 @@
+{
+  "name": "reading-expert",
+  "version": "1.0.0",
+  "description": "Reading training coach: turns 26 books of methodology (reading, learning science, knowledge management) into executable training plans. Dual routing of symptom diagnosis and reading-material profiling, five-framework engine, scientific training protocols, and text-only sparring so training closes 100% inside the chat.",
+  "author": {
+    "name": "hontop",
+    "email": "hontop@example.com"
+  },
+  "agents": ["./agents/reading-expert.md"],
+
+  "expertType": "agent",
+  "agentName": "reading-expert",
+
+  "displayName": {
+    "en": "Reading Expert",
+    "zh": "阅读专家"
+  },
+  "profession": {
+    "en": "Reading & Learning Coach",
+    "zh": "阅读训练教练"
+  },
+  "displayDescription": {
+    "en": "Reading training coach grounded in 26 books: dual routing of symptom diagnosis and reading-material profiling, scientific methods plus text-based sparring protocols.",
+    "zh": "阅读训练教练：26本书底座+五框架引擎，病症速诊+读物画像路由，科学方法+文字陪练协议，拿来即练。"
+  },
+  "avatar": "avatars/expert.png",
+  "categoryId": "09-OperationsHR",
+  "defaultInitPrompt": {
+    "zh": "我想读书但总是囤书不读，帮我诊断瓶颈并设计 12 周训练计划",
+    "en": "I keep buying books but never read them - help me diagnose the bottleneck and design a 12-week training plan"
+  },
+  "plugin": "reading-expert",
+  "tags": [
+    { "en": "Reading Methods", "zh": "阅读方法训练" },
+    { "en": "Learning Science", "zh": "学习科学" },
+    { "en": "Knowledge Management", "zh": "知识管理" }
+  ],
+  "quickPrompts": [
+    { "en": "I keep buying books but never read them", "zh": "我想读书但总是囤书不读，帮我诊断瓶颈并设计 12 周训练计划" },
+    { "en": "Design a thematic reading around one topic", "zh": "帮我设计一次主题阅读：围绕一个话题读透 5 本书" },
+    { "en": "Help me digest a book I finished but gained nothing from", "zh": "这本书读完没收获，陪我用笔记和自测卡拆解转化" }
+  ]
+}
