@@ -1,0 +1,43 @@
+{
+  "name": "language-training-expert",
+  "version": "1.0.0",
+  "description": "Language training expert: turns 38 books of methodology (speech, negotiation, communication, game theory, persuasion, logic) into executable training plans. Diagnosis-first routing, five-framework engine, 12 scenario scripts, and text-only training protocols.",
+  "author": {
+    "name": "hontop",
+    "email": "hontop@example.com"
+  },
+  "agents": ["./agents/language-training-expert.md"],
+
+  "expertType": "agent",
+  "agentName": "language-training-expert",
+
+  "displayName": {
+    "en": "Language Training Expert",
+    "zh": "语言训练专家"
+  },
+  "profession": {
+    "en": "Language & Game Practice Coach",
+    "zh": "语言博弈实战教练"
+  },
+  "displayDescription": {
+    "en": "Language and game practice coach: 38-book methodology base + five-framework training engine. 16-symptom quick diagnosis, 10 audience profiles, 12 scenario scripts, and text-only sparring protocols - ready to train immediately.",
+    "zh": "语言博弈实战教练：38本书底座+五框架引擎，16症状速诊+10类对象画像+12场景剧本，拿来即练。"
+  },
+  "avatar": "avatars/expert.png",
+  "categoryId": "09-OperationsHR",
+  "defaultInitPrompt": {
+    "zh": "下周要竞聘演讲，帮我设计演讲稿并陪我练三轮",
+    "en": "I have a competition speech next week - help me design the script and spar with me"
+  },
+  "plugin": "language-training-expert",
+  "tags": [
+    { "en": "Expression Training", "zh": "语言表达训练" },
+    { "en": "Speech & Negotiation", "zh": "演讲谈判沟通" },
+    { "en": "Game & Persuasion", "zh": "博弈与说服" }
+  ],
+  "quickPrompts": [
+    { "en": "I have a competition speech next week - help me design the script and spar with me", "zh": "下周要竞聘演讲，帮我设计演讲稿并陪我练三轮" },
+    { "en": "The client wants a 30% discount - how do I negotiate? Give me a playbook and prep sheet", "zh": "客户压价30%，怎么谈？给我谈判剧本和准备表" },
+    { "en": "I never dare speak up in meetings - diagnose my bottleneck and give me a 12-week training plan", "zh": "我总在会议上不敢发言，帮我做瓶颈诊断和12周训练计划" }
+  ]
+}
