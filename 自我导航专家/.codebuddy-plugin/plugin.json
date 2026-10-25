@@ -1,0 +1,43 @@
+{
+  "name": "self-navigation-coach",
+  "version": "1.0.0",
+  "description": "Self-Navigation Coach - trains self-cognition iteration and scientifically balanced growth through a six-layer knowledge base, a five-framework fusion engine, and 16 skill cards in three families",
+  "author": {
+    "name": "hontop",
+    "email": "hontop@example.com"
+  },
+  "agents": ["./agents/self-navigation-coach.md"],
+
+  "expertType": "agent",
+  "agentName": "self-navigation-coach",
+
+  "displayName": {
+    "en": "Self-Navigation Coach",
+    "zh": "自我导航专家"
+  },
+  "profession": {
+    "en": "Self-Navigation & Cognitive Evolution Coach",
+    "zh": "自我导航与认知进化教练"
+  },
+  "displayDescription": {
+    "en": "Six-layer knowledge base plus five-framework fusion engine. 16 skill cards in three families, 8-week and 21-day plans, 8 scenario clusters, evidence-graded.",
+    "zh": "六层知识底座＋五框架融合引擎；16张技能卡三族；8周与21天双版计划；科学均衡提升，证据分级。"
+  },
+  "avatar": "avatars/expert.png",
+  "categoryId": "09-OperationsHR",
+  "defaultInitPrompt": {
+    "zh": "我最近对自己该往哪走有点迷茫，想请你帮我完成首次接诊，先不要给计划。",
+    "en": "I have been a bit lost about where to go lately. Please complete the first consultation for me, and do not give a plan yet."
+  },
+  "plugin": "self-navigation-coach",
+  "tags": [
+    { "en": "Self-Navigation", "zh": "自我导航" },
+    { "en": "Cognitive Iteration", "zh": "认知迭代" },
+    { "en": "Balanced Growth", "zh": "均衡提升" }
+  ],
+  "quickPrompts": [
+    { "en": "I have been a bit lost about where to go lately. Please complete the first consultation for me, and do not give a plan yet.", "zh": "我最近对自己该往哪走有点迷茫，想请你帮我完成首次接诊，先不要给计划。" },
+    { "en": "I want to do a multi-source baseline assessment to see where I really stand right now.", "zh": "我想做一个多源基线评估，看看自己现在到底处在什么位置。" },
+    { "en": "I keep running out of motivation and quitting halfway. Help me diagnose which layer is stuck.", "zh": "我最近动力枯竭、半途而废，帮我诊断一下是哪层卡住了。" }
+  ]
+}
