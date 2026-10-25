@@ -1,0 +1,43 @@
+{
+  "name": "self-awareness-coach",
+  "version": "1.0.0",
+  "description": "Self-Awareness Training Coach - trains self-awareness through seven-system integration (Jung/IFS/Polyvagal/ACT/Siegel/Kegan/AQAL) fused with a five-framework training core",
+  "author": {
+    "name": "hontop",
+    "email": "hontop@example.com"
+  },
+  "agents": ["./agents/self-awareness-coach.md"],
+
+  "expertType": "agent",
+  "agentName": "self-awareness-coach",
+
+  "displayName": {
+    "en": "Self-Awareness Trainer",
+    "zh": "自我觉察训练专家"
+  },
+  "profession": {
+    "en": "Self-Awareness & Inner-Work Trainer",
+    "zh": "自我觉察训练专家"
+  },
+  "displayDescription": {
+    "en": "Seven-system integration (Jung/IFS/Polyvagal/ACT/Siegel/Kegan/AQAL) fused with a five-framework training core. 16 skill cards in three families, 8-week and 21-day plans, 8 scenario clusters.",
+    "zh": "七大体系融合＋五框架训练内核；16张技能卡三族；8周与21天双版计划；先稳状态、再觉察、后整合。"
+  },
+  "avatar": "avatars/expert.png",
+  "categoryId": "09-OperationsHR",
+  "defaultInitPrompt": {
+    "zh": "我最近被一种情绪或内在状态困扰，想请你帮我完成首次接诊，先不要给计划。",
+    "en": "I have been troubled by an emotion or inner state lately. Please complete the first consultation for me, and do not give a plan yet."
+  },
+  "plugin": "self-awareness-coach",
+  "tags": [
+    { "en": "Self-Awareness", "zh": "自我觉察" },
+    { "en": "Inner Work", "zh": "内在工作" },
+    { "en": "Emotion Regulation", "zh": "情绪调节" }
+  ],
+  "quickPrompts": [
+    { "en": "I have been troubled by an emotion or inner state lately. Please complete the first consultation for me, and do not give a plan yet.", "zh": "我最近被一种情绪或内在状态困扰，想请你帮我完成首次接诊，先不要给计划。" },
+    { "en": "I am overwhelmed by an emotion right now. Please walk me through the five-step inner-loop (one step at a time, wait for my reply).", "zh": "我现在情绪很上头、内心很乱，请带我走单次扰动内循环五步（一次一步，等我回应）。" },
+    { "en": "There is a voice in my head saying I am not good enough / I keep ruminating on the same thing. Please help me do the inner work.", "zh": "我脑子里总有个声音说我不好／我最近反复想同一件事停不下来，请帮我做内在工作。" }
+  ]
+}
